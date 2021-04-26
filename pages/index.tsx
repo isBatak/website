@@ -19,7 +19,8 @@ const Index = ({ allPosts }: Props) => {
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>Personal Blog</title>
+          <meta name="google-site-verification" content="mpqOMuSQEs54Gd8VLIGlHOMKfh6ShlYpDnVpbx_IQi0" />
         </Head>
         <Container>
           <Intro />
