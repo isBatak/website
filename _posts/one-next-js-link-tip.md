@@ -2,7 +2,7 @@
 title: 'One Next.js Link tip ✨'
 excerpt: 'You should never colocate Next.js Link inside actionable components, instead you should wrap it in the parent component.'
 coverImage: '/assets/blog/dynamic-routing/links.jpeg'
-date: '2021-04-26T05:35:07.322Z'
+date: '2021-07-01T05:35:07.322Z'
 author:
   name: Ivica Batinić
   picture: '/assets/blog/authors/isbatak.jpeg'
@@ -43,5 +43,6 @@ import NextLink from 'next/link';
 
 ## Reasons 🌈
 
-- Next.js Link is utility component which doesn't render any HTMl element, instead it just clones the children and prepends some additional props (ref, onClick, href)
-- If you colocate Next.js Link inside `SomeSpecificFeatureButton` you are mixing two concerns (presentational and behavioral) and you can't opt-out form behavioral one if you need to reuse this component in some different context, for example attach `onClick` handler to `SomeSpecificFeatureButton` and open a delete action modal.
+Next.js Link is utility component which doesn't render any HTMl element, instead it just clones the children and prepends some additional props (ref, onClick, href).
+
+If you colocate Next.js Link inside `SomeSpecificFeatureButton` you are mixing two concerns (presentational and behavioral) and you can't opt-out form behavioral one if you need to reuse this component in some different context, for example attach `onClick` handler to `SomeSpecificFeatureButton` and open a delete action modal.
