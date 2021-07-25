@@ -1,26 +1,20 @@
-import Avatar from './avatar'
-import DateFormater from './date-formater'
-import CoverImage from './cover-image'
-import Link from 'next/link'
-import Author from '../types/author'
+import Avatar from './avatar';
+import DateFormater from './date-formater';
+import CoverImage from './cover-image';
+import Link from 'next/link';
+import Author from '../types/author';
+import { Button, Heading } from '@chakra-ui/react';
 
 type Props = {
-  title: string
-  coverImage: string
-  date: string
-  excerpt: string
-  author: Author
-  slug: string
-}
+  title: string;
+  coverImage: string;
+  date: string;
+  excerpt: string;
+  author: Author;
+  slug: string;
+};
 
-const PostPreview = ({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: Props) => {
+const PostPreview = ({ title, coverImage, date, excerpt, author, slug }: Props) => {
   return (
     <div>
       <div className="mb-5">
@@ -36,8 +30,9 @@ const PostPreview = ({
       </div>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
       <Avatar name={author.name} picture={author.picture} />
+      <Button>READ</Button>
     </div>
-  )
-}
+  );
+};
 
-export default PostPreview
+export default PostPreview;
