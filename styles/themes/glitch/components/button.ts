@@ -77,23 +77,34 @@ const baseStyle = {
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(45detransparent 3%, #02D7F2 3%, #02D7F2 5%, #FF013C 5%)',
-    textShadow: '-3px -3px 0px #F8F005, 3px 3px 0px #02D7F2',
+    bg: 'linear-gradient(45deg, transparent 3%, #02D7F2 3%, #02D7F2 5%, #010101 5%)',
+    textShadow: '-3px -3px 0px #FFEE08, 3px 3px 0px #02D7F2',
     clipPath: 'var(--slice-0)',
-  },
-  _hover: {
-    boxShadow: '4px 4px 0px #02D7F2',
   },
   '&:hover:after': {
     animation: `1s ${glitch}`,
     animationTimingFunction: 'steps(2, end)',
   },
+  _hover: {
+    boxShadow: '4px 4px 0px #02D7F2',
+    color: '#02D7F2',
+  },
+  _focus: {
+    bg: 'linear-gradient(45deg, transparent 3%, #02D7F2 3%, #02D7F2 5%, #FD0130 5%)',
+    color: '#fff',
+  },
+  _active: {
+    bg: '#02D7F2',
+    color: '#010101',
+  },
+  _disabled: {
+    bg: '#CDCDCD',
+    color: '#888888',
+  },
 };
 
 function variantF(props: Dict) {
-  return {
-
-  };
+  return {};
 }
 
 const variants = {
