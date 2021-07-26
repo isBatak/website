@@ -6,7 +6,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.5",
@@ -19,19 +21,31 @@
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "remark": "13.0.0",
     "remark-html": "13.0.1",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@storybook/addon-a11y": "^6.3.6",
+    "@storybook/addon-actions": "^6.3.6",
+    "@storybook/addon-essentials": "^6.3.6",
+    "@storybook/addon-knobs": "^6.3.0",
+    "@storybook/addon-links": "^6.3.6",
+    "@storybook/addon-toolbars": "^6.3.6",
+    "@storybook/cli": "^6.3.6",
+    "@storybook/react": "^6.3.6",
     "@types/classnames": "^2.3.1",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.2",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.31.0",
     "eslint-config-next": "^11.0.1",
     "postcss-preset-env": "^6.7.0",
+    "storybook-addon-performance": "^0.16.0",
     "tailwindcss": "^1.4.0"
   }
 }

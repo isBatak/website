@@ -54,7 +54,7 @@ const baseStyle = {
   '&, &:after': {
     lineHeight: { base: '78px', md: '88px' },
     fontFamily: 'heading',
-    bg: 'linear-gradient(45deg, transparent 5%, #010101 5%)',
+    bg: '#010101',
     border: 0,
     borderRadius: 'none',
     color: '#fff',
@@ -62,6 +62,7 @@ const baseStyle = {
     position: 'relative',
     userSelect: 'none',
     touchAction: 'manipulation',
+    clipPath: 'polygon(0% 70%, 10% 100%, 100% 100%, 100% 80%, 95% 70%, 95% 30%, 100% 20%, 100% 0%, 0% 0%)',
   },
   '&:after': {
     '--slice-0': 'inset(50% 50% 50% 50%)',
@@ -90,8 +91,9 @@ const baseStyle = {
     color: '#02D7F2',
   },
   _focus: {
-    bg: 'linear-gradient(45deg, transparent 3%, #02D7F2 3%, #02D7F2 5%, #FD0130 5%)',
+    bg: '#FD0130',
     color: '#fff',
+    outline: 'none',
   },
   _active: {
     bg: '#02D7F2',
