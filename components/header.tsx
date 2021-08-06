@@ -1,14 +1,19 @@
-import Link from 'next/link'
+import { Container, Flex, Heading, IconButton, Image, Text } from '@chakra-ui/react';
+import Link from 'next/link';
+import { IoMoonOutline, IoSunnyOutline } from 'react-icons/io5';
 
 const Header = () => {
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a className="hover:underline">Blog</a>
+    <Container py="5">
+      <Link href="/" passHref>
+        <Flex as="a" alignItems="flex-end" sx={{ gap: 10 }}>
+          <Image src="/assets/logo.svg" alt="logo" w="50px" s />
+          <Heading>isBatak</Heading>
+        </Flex>
       </Link>
-      .
-    </h2>
-  )
-}
+      <IconButton aria-label="Toggle dark mode" icon={<IoMoonOutline />} />
+    </Container>
+  );
+};
 
-export default Header
+export default Header;

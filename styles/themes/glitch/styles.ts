@@ -5,7 +5,7 @@ const styles: Styles = {
     body: {
       fontFamily: 'body',
       color: mode('gray.800', 'whiteAlpha.900')(props),
-      bg: mode('#FFEE08', '#010101')(props),
+      bg: mode('white', '#010101')(props),
       transitionProperty: 'background-color',
       transitionDuration: 'normal',
       lineHeight: 'base',

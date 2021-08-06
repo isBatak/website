@@ -62,7 +62,7 @@ const baseStyle = {
     position: 'relative',
     userSelect: 'none',
     touchAction: 'manipulation',
-    clipPath: 'polygon(0% 70%, 10% 100%, 100% 100%, 100% 80%, 95% 70%, 95% 30%, 100% 20%, 100% 0%, 0% 0%)',
+    // clipPath: 'polygon(0% 70%, 10% 100%, 100% 100%, 100% 80%, 95% 70%, 95% 30%, 100% 20%, 100% 0%, 0% 0%)',
   },
   '&:after': {
     '--slice-0': 'inset(50% 50% 50% 50%)',
@@ -86,19 +86,11 @@ const baseStyle = {
     animation: `1s ${glitch}`,
     animationTimingFunction: 'steps(2, end)',
   },
-  _hover: {
-    boxShadow: '4px 4px 0px #02D7F2',
-    color: '#02D7F2',
-  },
+  _hover: {},
   _focus: {
-    bg: '#FD0130',
-    color: '#fff',
     outline: 'none',
   },
-  _active: {
-    bg: '#02D7F2',
-    color: '#010101',
-  },
+  _active: {},
   _disabled: {
     bg: '#CDCDCD',
     color: '#888888',

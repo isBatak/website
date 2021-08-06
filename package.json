@@ -8,7 +8,9 @@
     "lint": "next lint",
     "typecheck": "tsc",
     "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "build-storybook -s ./public"
+    "build-storybook": "build-storybook -s ./public",
+    "gen:theme-typings": "chakra-cli tokens ./styles/themes/glitch/index.ts",
+    "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.5",
@@ -19,6 +21,7 @@
     "framer-motion": "^4",
     "gray-matter": "4.0.2",
     "next": "latest",
+    "next-seo": "^4.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -41,11 +44,9 @@
     "@types/node": "^16.4.2",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
-    "babel-loader": "^8.2.2",
+    "chakra-cli": "^1.0.1",
     "eslint": "^7.31.0",
     "eslint-config-next": "^11.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "storybook-addon-performance": "^0.16.0",
-    "tailwindcss": "^1.4.0"
+    "storybook-addon-performance": "^0.16.0"
   }
 }

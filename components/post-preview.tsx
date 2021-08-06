@@ -1,9 +1,8 @@
-import Avatar from './avatar';
 import DateFormater from './date-formater';
 import CoverImage from './cover-image';
 import Link from 'next/link';
 import Author from '../types/author';
-import { Button, Heading } from '@chakra-ui/react';
+import { Avatar, Button, Heading } from '@chakra-ui/react';
 
 type Props = {
   title: string;
@@ -29,7 +28,7 @@ const PostPreview = ({ title, coverImage, date, excerpt, author, slug }: Props) 
         <DateFormater dateString={date} />
       </div>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
+      <Avatar name={author.name} src={author.picture} />
       <Button>READ</Button>
     </div>
   );

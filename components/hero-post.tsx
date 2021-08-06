@@ -1,26 +1,20 @@
-import Avatar from './avatar'
-import DateFormater from './date-formater'
-import CoverImage from './cover-image'
-import Link from 'next/link'
-import Author from '../types/author'
+import { Avatar } from '@chakra-ui/react';
+
+import DateFormater from './date-formater';
+import CoverImage from './cover-image';
+import Link from 'next/link';
+import Author from '../types/author';
 
 type Props = {
-  title: string
-  coverImage: string
-  date: string
-  excerpt: string
-  author: Author
-  slug: string
-}
+  title: string;
+  coverImage: string;
+  date: string;
+  excerpt: string;
+  author: Author;
+  slug: string;
+};
 
-const HeroPost = ({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: Props) => {
+const HeroPost = ({ title, coverImage, date, excerpt, author, slug }: Props) => {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -43,7 +37,7 @@ const HeroPost = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroPost
+export default HeroPost;

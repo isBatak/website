@@ -1,10 +1,11 @@
-import Container from '../components/container';
+import { NextSeo } from 'next-seo';
+import { Container } from '@chakra-ui/react';
+
 import MoreStories from '../components/more-stories';
 import HeroPost from '../components/hero-post';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
 import { getAllPosts } from '../lib/api';
-import Head from 'next/head';
 import Post from '../types/post';
 import { Chakra } from '../lib/Chakra';
 
@@ -19,10 +20,7 @@ const Index = ({ allPosts }: Props) => {
   return (
     <Chakra>
       <Layout>
-        <Head>
-          <title>Personal Blog</title>
-          <meta name="google-site-verification" content="mpqOMuSQEs54Gd8VLIGlHOMKfh6ShlYpDnVpbx_IQi0" />
-        </Head>
+        <NextSeo title="Personal Blog" />
         <Container>
           <Intro />
           {heroPost && (

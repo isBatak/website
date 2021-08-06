@@ -1,24 +1,15 @@
-import Container from './container'
+import { Container } from '@chakra-ui/react';
 
 const PreviewAlert = () => {
   return (
-    <div
-      className="border-b bg-accent-7 border-accent-7 text-white"
-    >
+    <div>
       <Container>
-        <div className="py-2 text-center text-sm">
-          This is page is a preview.{' '}
-          <a
-            href="/api/exit-preview"
-            className="underline hover:text-cyan duration-200 transition-colors"
-          >
-            Click here
-          </a>{' '}
-          to exit preview mode.
+        <div>
+          This is page is a preview. <a href="/api/exit-preview">Click here</a> to exit preview mode.
         </div>
       </Container>
     </div>
   );
-}
+};
 
 export default PreviewAlert;
