@@ -28,25 +28,24 @@ const Post = ({ post, morePosts, preview }: Props) => {
   return (
     <Chakra>
       <Layout preview={preview}>
-        <Container>
-          <Header />
-          {router.isFallback ? (
+        {router.isFallback ? (
+          <Container maxW="740px" pb={32}>
             <PostTitle>Loading…</PostTitle>
-          ) : (
-            <>
-              <article className="mb-32">
-                <Head>
-                  <title>
-                    {post.title} | Next.js Blog Example with {CMS_NAME}
-                  </title>
-                  <meta property="og:image" content={post.ogImage.url} />
-                </Head>
-                <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
-                <PostBody content={post.content} />
-              </article>
-            </>
-          )}
-        </Container>
+          </Container>
+        ) : (
+          <>
+            <Head>
+              <title>
+                {post.title} | Next.js Blog Example with {CMS_NAME}
+              </title>
+              <meta property="og:image" content={post.ogImage.url} />
+            </Head>
+            <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
+            <Container maxW="740px" pb={32}>
+              <PostBody content={post.content} />
+            </Container>
+          </>
+        )}
       </Layout>
     </Chakra>
   );

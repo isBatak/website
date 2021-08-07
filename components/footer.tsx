@@ -1,5 +1,5 @@
-import { Box, Container, Flex, HStack, Select, Text } from '@chakra-ui/react';
-import { IoLogoGithub, IoLogoTwitter } from 'react-icons/io5';
+import { Box, Container, Flex, Select, Text } from '@chakra-ui/react';
+import { SocialMediaLinks } from './social-media-links';
 
 const Footer = () => {
   return (
@@ -10,10 +10,7 @@ const Footer = () => {
             <Text>Copyright © 2021. All rights reserved.</Text>
           </Box>
           <Box>
-            <HStack>
-              <IoLogoGithub />
-              <IoLogoTwitter />
-            </HStack>
+            <SocialMediaLinks />
           </Box>
           <Box>
             <Select size="sm">

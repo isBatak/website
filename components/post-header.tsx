@@ -1,4 +1,4 @@
-import { Avatar } from '@chakra-ui/react';
+import { Avatar, Box, Image } from '@chakra-ui/react';
 
 import DateFormater from './date-formater';
 import CoverImage from './cover-image';
@@ -14,23 +14,20 @@ type Props = {
 
 const PostHeader = ({ title, coverImage, date, author }: Props) => {
   return (
-    <>
+    <Box>
+      <Image title={title} src={coverImage} w="100%" h="400px" objectFit="cover" />
+
       <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar name={author.name} src={author.picture} />
-      </div>
-      <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
-        <CoverImage title={title} src={coverImage} />
-      </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
+
+      <div>
+        <div>
           <Avatar name={author.name} src={author.picture} />
         </div>
-        <div className="mb-6 text-lg">
+        <div>
           <DateFormater dateString={date} />
         </div>
       </div>
-    </>
+    </Box>
   );
 };
 

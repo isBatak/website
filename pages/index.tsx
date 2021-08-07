@@ -22,7 +22,6 @@ const Index = ({ allPosts }: Props) => {
       <Layout>
         <NextSeo title="Personal Blog" />
         <Container>
-          <Intro />
           {heroPost && (
             <HeroPost
               title={heroPost.title}
