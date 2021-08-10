@@ -1,0 +1,1 @@
+1. Reimplement rewards https://github.com/thedevelobear/react-rewards
