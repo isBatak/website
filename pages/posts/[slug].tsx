@@ -20,9 +20,11 @@ type Props = {
 
 const Post = ({ post, morePosts, preview }: Props) => {
   const router = useRouter();
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
     <Chakra>
       <Layout preview={preview}>
@@ -38,7 +40,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
               </title>
               <meta property="og:image" content={post.ogImage.url} />
             </Head>
-            <Container maxW="740px" pb={32}>
+            <Container maxW="740px" py={10}>
               <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
               <PostBody content={post.content} />
             </Container>

@@ -1,5 +1,5 @@
 ---
-title: 'TIP of the Day: inversion of control!'
+title: 'TIP of the Day: inversion of control!  ✨'
 excerpt: 'You can use inversion of control here instead of useMemo to transform data'
 coverImage: '/assets/blog/dynamic-routing/links.jpeg'
 date: '2021-07-15T05:58:07.322Z'
@@ -9,8 +9,6 @@ author:
 ogImage:
   url: '/assets/blog/dynamic-routing/links.jpeg'
 ---
-
-# TIP of the Day: inversion of control! ✨
 
 ## Problem ⚡️
 

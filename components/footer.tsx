@@ -4,7 +4,7 @@ import { IoHeart } from 'react-icons/io5';
 
 const Footer = () => {
   return (
-    <Box as="footer" py="5">
+    <Box as="footer" py="5" flex="0">
       <Container>
         <Flex justifyContent="space-between" alignItems="center">
           <Box>

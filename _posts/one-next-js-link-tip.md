@@ -10,8 +10,6 @@ ogImage:
   url: '/assets/blog/dynamic-routing/links.jpeg'
 ---
 
-# One Next.js Link tip ✨
-
 You should never colocate Next.js Link inside actionable components, instead you should wrap it in the parent component.
 
 ## So, instead of this ⚡️

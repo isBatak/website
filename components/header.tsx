@@ -3,13 +3,11 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
   Link,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Container,
   Image,
@@ -28,18 +26,18 @@ interface NavItem {
 }
 
 const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: 'Home',
-    href: '/',
-  },
+  // {
+  //   label: 'Home',
+  //   href: '/',
+  // },
   {
     label: 'Blog',
-    href: '/blog',
+    href: '/',
   },
-  {
-    label: 'About',
-    href: '/about',
-  },
+  // {
+  //   label: 'About',
+  //   href: '/about',
+  // },
 ];
 
 const DesktopNav = () => {
@@ -116,7 +114,7 @@ const Header = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Container py="5">
+    <Container py="5" flex="0">
       <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
         <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
           <IconButton

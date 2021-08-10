@@ -16,7 +16,9 @@ const Index = ({ allPosts }: Props) => {
     <Chakra>
       <Layout>
         <NextSeo title="Personal Blog" />
-        <Container maxW="2xl">{allPosts.length > 0 && <MoreStories posts={allPosts} />}</Container>
+        <Container maxW="2xl" py="5">
+          {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+        </Container>
       </Layout>
     </Chakra>
   );
