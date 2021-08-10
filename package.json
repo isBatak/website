@@ -9,7 +9,7 @@
     "typecheck": "tsc",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
-    "gen:theme-typings": "chakra-cli tokens ./styles/themes/glitch/index.ts",
+    "gen:theme-typings": "chakra-cli tokens ./styles/themes/glitch/index.tsx",
     "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
+    "@chakra-ui/cli": "^1.5.0",
     "@storybook/addon-a11y": "^6.3.6",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
@@ -44,7 +45,6 @@
     "@types/node": "^16.4.2",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
-    "chakra-cli": "^1.0.1",
     "eslint": "^7.31.0",
     "eslint-config-next": "^11.0.1",
     "storybook-addon-performance": "^0.16.0"
