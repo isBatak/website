@@ -2,8 +2,6 @@ import { NextSeo } from 'next-seo';
 import { Container } from '@chakra-ui/react';
 
 import MoreStories from '../components/more-stories';
-import HeroPost from '../components/hero-post';
-import Intro from '../components/intro';
 import Layout from '../components/layout';
 import { getAllPosts } from '../lib/api';
 import Post from '../types/post';
@@ -14,26 +12,11 @@ type Props = {
 };
 
 const Index = ({ allPosts }: Props) => {
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
-
   return (
     <Chakra>
       <Layout>
         <NextSeo title="Personal Blog" />
-        <Container>
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
+        <Container maxW="2xl">{allPosts.length > 0 && <MoreStories posts={allPosts} />}</Container>
       </Layout>
     </Chakra>
   );

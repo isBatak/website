@@ -1,6 +1,6 @@
 import PostPreview from './post-preview';
 import Post from '../types/post';
-import { Heading } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 
 type Props = {
   posts: Post[];
@@ -8,22 +8,18 @@ type Props = {
 
 const MoreStories = ({ posts }: Props) => {
   return (
-    <section>
-      <Heading>More Stories</Heading>
-      <div>
-        {posts.map((post) => (
-          <PostPreview
-            key={post.slug}
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
-            slug={post.slug}
-            excerpt={post.excerpt}
-          />
-        ))}
-      </div>
-    </section>
+    <VStack as="section" align="stretch" spacing={8} py={5}>
+      {posts.map((post) => (
+        <PostPreview
+          key={post.slug}
+          title={post.title}
+          date={post.date}
+          author={post.author}
+          slug={post.slug}
+          excerpt={post.excerpt}
+        />
+      ))}
+    </VStack>
   );
 };
 

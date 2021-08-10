@@ -1,4 +1,4 @@
-import markdownStyles from './markdown-styles.module.css';
+import { Box } from '@chakra-ui/react';
 
 type Props = {
   content: string;
@@ -6,9 +6,9 @@ type Props = {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <div>
-      <div className={markdownStyles['markdown']} dangerouslySetInnerHTML={{ __html: content }} />
-    </div>
+    <Box mt="10">
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+    </Box>
   );
 };
 

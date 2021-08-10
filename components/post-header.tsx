@@ -1,8 +1,6 @@
-import { Avatar, Box, Image } from '@chakra-ui/react';
+import { Avatar, Box, chakra, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
 
 import DateFormater from './date-formater';
-import CoverImage from './cover-image';
-import PostTitle from './post-title';
 import Author from '../types/author';
 
 type Props = {
@@ -15,18 +13,22 @@ type Props = {
 const PostHeader = ({ title, coverImage, date, author }: Props) => {
   return (
     <Box>
-      <Image title={title} src={coverImage} w="100%" h="400px" objectFit="cover" />
+      <Image title={title} src={coverImage} w="100%" h="400px" objectFit="cover" borderRadius="xl" alt={title} />
 
-      <PostTitle>{title}</PostTitle>
+      <Heading mt="5">{title}</Heading>
 
-      <div>
-        <div>
-          <Avatar name={author.name} src={author.picture} />
-        </div>
-        <div>
+      <Flex alignItems="center">
+        <Flex alignItems="center">
+          <Avatar size="xs" name={author.name} src={author.picture} />
+
+          <Text mx={2} fontWeight="bold" color={useColorModeValue('gray.700', 'gray.200')}>
+            {author.name}
+          </Text>
+        </Flex>
+        <chakra.span mx={1} fontSize="sm" color={useColorModeValue('gray.600', 'gray.300')}>
           <DateFormater dateString={date} />
-        </div>
-      </div>
+        </chakra.span>
+      </Flex>
     </Box>
   );
 };

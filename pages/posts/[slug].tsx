@@ -1,13 +1,11 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import { Container } from '@chakra-ui/react';
+import { Container, Heading } from '@chakra-ui/react';
 
 import PostBody from '../../components/post-body';
-import Header from '../../components/header';
 import PostHeader from '../../components/post-header';
 import Layout from '../../components/layout';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
-import PostTitle from '../../components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from '../../lib/constants';
 import markdownToHtml from '../../lib/markdownToHtml';
@@ -30,7 +28,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
       <Layout preview={preview}>
         {router.isFallback ? (
           <Container maxW="740px" pb={32}>
-            <PostTitle>Loading…</PostTitle>
+            <Heading>Loading…</Heading>
           </Container>
         ) : (
           <>
@@ -40,8 +38,8 @@ const Post = ({ post, morePosts, preview }: Props) => {
               </title>
               <meta property="og:image" content={post.ogImage.url} />
             </Head>
-            <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
             <Container maxW="740px" pb={32}>
+              <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
               <PostBody content={post.content} />
             </Container>
           </>
