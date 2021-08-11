@@ -5,7 +5,7 @@ coverImage: '/assets/blog/dynamic-routing/links.jpeg'
 date: '2021-07-15T05:58:07.322Z'
 author:
   name: Ivica Batinić
-  picture: '/assets/blog/authors/isbatak.png'
+  picture: '/assets/blog/authors/isbatak.jpg'
 ogImage:
   url: '/assets/blog/dynamic-routing/links.jpeg'
 ---

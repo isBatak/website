@@ -13,9 +13,7 @@ type Props = {
 const PostHeader = ({ title, coverImage, date, author }: Props) => {
   return (
     <Box>
-      <Image title={title} src={coverImage} w="100%" h="400px" objectFit="cover" borderRadius="xl" alt={title} />
-
-      <Heading mt="5">{title}</Heading>
+      <Heading>{title}</Heading>
 
       <Flex alignItems="center">
         <Flex alignItems="center">
@@ -29,6 +27,8 @@ const PostHeader = ({ title, coverImage, date, author }: Props) => {
           <DateFormater dateString={date} />
         </chakra.span>
       </Flex>
+
+      <Image title={title} src={coverImage} w="100%" borderRadius="xl" alt={title} mt="5" />
     </Box>
   );
 };

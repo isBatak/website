@@ -35,9 +35,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
         ) : (
           <>
             <Head>
-              <title>
-                {post.title} | Next.js Blog Example with {CMS_NAME}
-              </title>
+              <title>{post.title} | isBatak</title>
               <meta property="og:image" content={post.ogImage.url} />
             </Head>
             <Container maxW="740px" py={10}>
