@@ -127,7 +127,7 @@ const Header = () => {
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <NextLink href="/" passHref>
             <Flex as="a" alignItems="flex-end" sx={{ gap: 10 }}>
-              <Image src="/assets/logo.svg" alt="logo" w="30px" s />
+              <Image src="/assets/logo.svg" alt="logo" w="30px" />
               <Heading color={useColorModeValue('gray.800', 'white')}>isBatak</Heading>
             </Flex>
           </NextLink>
