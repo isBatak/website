@@ -54,6 +54,10 @@ const styles: Styles = {
       ul: {
         pl: 5,
       },
+      a: {
+        textDecor: 'underline',
+        color: 'brand.400',
+      },
     },
   }),
 };
