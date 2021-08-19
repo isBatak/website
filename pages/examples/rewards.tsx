@@ -24,6 +24,7 @@ import Post from '../../types/post';
 import { Chakra } from '../../lib/Chakra';
 import { Reward } from '../../lib/rewards/Reward';
 import { IsBatak } from '../../components/is-batak';
+import { IsMelon } from '../../components/is-melon';
 
 const defaults = {
   lifetime: 200,
@@ -58,6 +59,7 @@ const Rewards = ({ allPosts }: Props) => {
       <Layout>
         <NextSeo title="Personal Blog" />
         <Container maxW="2xl" py="5" centerContent>
+          <IsMelon />
           <Reward type={type} zIndex={9999} {...config}>
             {({ rewardMe }) => <IsBatak mt={20} onClick={() => rewardMe()} />}
           </Reward>
