@@ -1,5 +1,5 @@
 const PI = Math.PI;
-const defaultEmoji = ['🍗'];
+const defaultEmoji = ['🍉'];
 
 const createElements = (root, elementCount, elementSize, zIndex, emoji) =>
   Array.from({ length: elementCount }).map((_, index) => {
