@@ -4,8 +4,8 @@ import * as React from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { withPerformance } from 'storybook-addon-performance';
 
-import glitch from '../styles/themes/glitch';
-import Fonts from '../styles/themes/glitch/Fonts';
+import batak from '../styles/themes/batak';
+import Fonts from '../styles/themes/batak/Fonts';
 
 /**
  * Add global context for RTL-LTR switching

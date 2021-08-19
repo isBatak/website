@@ -13,7 +13,7 @@ type Props = {
 
 const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: Props) => {
   return (
-    <Box p={6} rounded="lg" shadow="md" borderWidth="1px" bg={useColorModeValue('white', 'gray.800')} {...rest}>
+    <Box {...rest}>
       <Box>
         <NextLink as={`/posts/${slug}`} href="/posts/[slug]" passHref>
           <Link
@@ -48,7 +48,7 @@ const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: Props) => 
       </Box>
 
       <NextLink href={`/posts/${slug}`} passHref>
-        <Button as="a" w={{ base: 'full', sm: 'auto' }} size="md" mt="4">
+        <Button colorScheme="brand" as="a" w={{ base: 'full', sm: 'auto' }} size="md" mt="4">
           Read More
         </Button>
       </NextLink>

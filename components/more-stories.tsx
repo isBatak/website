@@ -1,6 +1,6 @@
 import PostPreview from './post-preview';
 import Post from '../types/post';
-import { VStack } from '@chakra-ui/react';
+import { StackDivider, VStack } from '@chakra-ui/react';
 
 type Props = {
   posts: Post[];
@@ -8,7 +8,7 @@ type Props = {
 
 const MoreStories = ({ posts }: Props) => {
   return (
-    <VStack as="section" align="stretch" spacing={8} py={5}>
+    <VStack as="section" align="stretch" spacing={8} py={5} divider={<StackDivider borderColor="gray.200" />}>
       {posts.map((post) => (
         <PostPreview
           key={post.slug}

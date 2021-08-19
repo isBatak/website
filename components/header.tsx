@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 
 import NextLink from 'next/link';
-import { IoMoonOutline, IoSunnyOutline, IoClose, IoMenu, IoArrowDown } from 'react-icons/io5';
+import { IoMoon, IoSunny, IoClose, IoMenu, IoArrowDown } from 'react-icons/io5';
 
 interface NavItem {
   label: string;
@@ -103,9 +103,10 @@ const ModeToggle = () => {
 
   return (
     <IconButton
+      variant="icon"
       onClick={toggleColorMode}
       aria-label="Toggle dark mode"
-      icon={colorMode === 'light' ? <IoMoonOutline /> : <IoSunnyOutline />}
+      icon={colorMode === 'light' ? <IoMoon /> : <IoSunny />}
     />
   );
 };
