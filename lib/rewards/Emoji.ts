@@ -1,6 +1,7 @@
 const PI = Math.PI;
 const defaultEmoji = ['🍉'];
 
+// @ts-ignore
 const createElements = (root, elementCount, elementSize, zIndex, emoji) =>
   Array.from({ length: elementCount }).map((_, index) => {
     const element = document.createElement('span');
@@ -14,8 +15,10 @@ const createElements = (root, elementCount, elementSize, zIndex, emoji) =>
     return element;
   });
 
+// @ts-ignore
 const radiansFrom = (degrees) => degrees * (PI / 180);
 
+// @ts-ignore
 const generatePhysics = (angle, spread, startVelocity, random) => {
   const radAngle = radiansFrom(angle);
   const radSpread = radiansFrom(spread);
@@ -30,6 +33,7 @@ const generatePhysics = (angle, spread, startVelocity, random) => {
   };
 };
 
+// @ts-ignore
 const updateMojis = (fetti, progress, decay) => {
   fetti.physics.x += Math.cos(fetti.physics.angle2D) * fetti.physics.velocity;
   fetti.physics.y += Math.sin(fetti.physics.angle2D) * fetti.physics.velocity;
@@ -47,17 +51,20 @@ const updateMojis = (fetti, progress, decay) => {
   fetti.element.style.opacity = 1 - progress;
 };
 
+// @ts-ignore
 const animate = (root, mojis, decay, lifetime) => {
   const totalTicks = lifetime;
   let tick = 0;
 
   const update = () => {
+    // @ts-ignore
     mojis.forEach((fetti) => updateMojis(fetti, tick / totalTicks, decay));
 
     tick += 1;
     if (tick < totalTicks) {
       window.requestAnimationFrame(update);
     } else {
+      // @ts-ignore
       mojis.forEach((fetti) => {
         if (fetti.element.parentNode === root) {
           return root.removeChild(fetti.element);
@@ -70,6 +77,7 @@ const animate = (root, mojis, decay, lifetime) => {
 };
 
 const emoji = (
+  // @ts-ignore
   root,
   {
     angle = 90,

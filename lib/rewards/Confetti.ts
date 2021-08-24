@@ -11,7 +11,8 @@ const createElements = (
   Array.from({ length: elementCount }).map((_, index) => {
     const element = document.createElement('span');
     const color = colors[index % colors.length];
-    element.style['background-color'] = color;
+
+    element.style.backgroundColor = color;
     element.style.width = `${elementSize}px`;
     element.style.height = `${elementSize}px`;
     element.style.position = 'absolute';
@@ -22,6 +23,7 @@ const createElements = (
 
 const radiansFrom = (degrees: number) => degrees * (PI / 180);
 
+// @ts-ignore
 const generatePhysics = (angle, spread, startVelocity, random) => {
   const radAngle = radiansFrom(angle);
   const radSpread = radiansFrom(spread);
@@ -36,6 +38,7 @@ const generatePhysics = (angle, spread, startVelocity, random) => {
   };
 };
 
+// @ts-ignore
 const updateFetti = (fetti, progress, decay, index) => {
   fetti.physics.x += Math.cos(fetti.physics.angle2D) * fetti.physics.velocity;
   fetti.physics.y += Math.sin(fetti.physics.angle2D) * fetti.physics.velocity;
@@ -92,12 +95,14 @@ const confetti = (
     random = Math.random,
   } = {}
 ) => {
+  // @ts-ignore
   const elements = createElements(root, elementCount, elementSize, zIndex, colors);
   const fettis = elements.map((element) => ({
     element,
     physics: generatePhysics(angle, spread, startVelocity, random),
   }));
 
+  // @ts-ignore
   animate(root, fettis, decay, lifetime);
 };
 

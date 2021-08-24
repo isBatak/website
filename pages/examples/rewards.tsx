@@ -59,8 +59,10 @@ const Rewards = ({ allPosts }: Props) => {
       <Layout>
         <NextSeo title="Personal Blog" />
         <Container maxW="2xl" py="5" centerContent>
+          {/* @ts-ignore */}
           <IsMelon />
           <Reward type={type} zIndex={9999} {...config}>
+            {/* @ts-ignore */}
             {({ rewardMe }) => <IsBatak mt={20} onClick={() => rewardMe()} />}
           </Reward>
 
