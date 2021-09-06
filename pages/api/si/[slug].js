@@ -1,11 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 import chromium from 'chrome-aws-lambda';
+import fs from 'fs';
+
+import { getPostBySlug } from '../../../lib/api';
 
 const generateThumbnail = async (post) => {
-  const imageAvatar = fs.readFileSync('./public/xaconi.jpg');
+  const imageAvatar = fs.readFileSync('./public/assets/blog/authors/isbatak.jpg');
   const base64Image = new Buffer.from(imageAvatar).toString('base64');
   const dataURI = 'data:image/jpeg;base64,' + base64Image;
-  const originalDate = new Date(post.attributes.date);
+  const originalDate = new Date(post.date);
   const formattedDate = `${originalDate.getDate()}/${('0' + (originalDate.getMonth() + 1)).slice(
     -2
   )}/${originalDate.getFullYear()}`;
@@ -18,12 +21,7 @@ const generateThumbnail = async (post) => {
     ignoreHTTPSErrors: true,
   });
 
-  const tags =
-    post.attributes.tags
-      ?.map((tag) => {
-        return `#${tag}`;
-      })
-      .join(' | ') || '';
+  const tags = '#blog';
 
   const page = await browser.newPage();
 
@@ -33,7 +31,7 @@ const generateThumbnail = async (post) => {
   <body>
       <div class="social-image-content">
           <h1>
-              ${post.attributes.title}
+              ${post.title}
           </h1>
           <div class="social-image-footer">
               <div class="social-image-footer-left">
@@ -129,8 +127,10 @@ const generateThumbnail = async (post) => {
 };
 
 export default async (req, res) => {
-  const postSlug = req.query.post;
-  const post = searchPostBySlug(postSlug);
+  const slug = req.query.slug.replace('.jpg', '');
+  const post = getPostBySlug(slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage']);
+
+  console.log(post);
 
   const postThumbnail = generateThumbnail(post);
 

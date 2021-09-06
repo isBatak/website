@@ -9,7 +9,7 @@
     "typecheck": "tsc",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
-    "gen:theme-typings": "chakra-cli tokens ./styles/themes/glitch/index.tsx",
+    "gen:theme-typings": "chakra-cli tokens ./styles/themes/batak/index.tsx",
     "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "gray-matter": "4.0.2",
     "next": "^11.0.1",
     "next-seo": "^4.26.0",
+    "puppeteer-core": "^10.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -48,6 +49,7 @@
     "@types/react-dom": "^17.0.9",
     "eslint": "^7.31.0",
     "eslint-config-next": "^11.0.1",
+    "puppeteer": "^10.2.0",
     "storybook-addon-performance": "^0.16.0"
   }
 }

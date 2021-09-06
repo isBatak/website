@@ -6,11 +6,10 @@ import PostBody from '../../components/post-body';
 import PostHeader from '../../components/post-header';
 import Layout from '../../components/layout';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
-import Head from 'next/head';
-import { CMS_NAME } from '../../lib/constants';
 import markdownToHtml from '../../lib/markdownToHtml';
 import PostType from '../../types/post';
 import { Chakra } from '../../lib/Chakra';
+import Seo from 'components/seo';
 
 type Props = {
   post: PostType;
@@ -18,7 +17,7 @@ type Props = {
   preview?: boolean;
 };
 
-const Post = ({ post, morePosts, preview }: Props) => {
+const Post = ({ post, preview }: Props) => {
   const router = useRouter();
 
   if (!router.isFallback && !post?.slug) {
@@ -34,10 +33,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
           </Container>
         ) : (
           <>
-            <Head>
-              <title>{post.title} | isBatak</title>
-              <meta property="og:image" content={post.ogImage.url} />
-            </Head>
+            <Seo post={post} />
             <Container maxW="740px" py={10}>
               <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
               <PostBody content={post.content} />
