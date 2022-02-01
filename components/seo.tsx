@@ -10,9 +10,9 @@ const Seo = ({ post }: { post: PostType }) => {
   return (
     <Head>
       <title>{post.title} | isBatak</title>
-      <meta property="og:image" content={getAbsoluteURL(`/api/si/${post.slug}.jpg`)} />
-      <meta property="og:image:secure_url" content={getAbsoluteURL(`/api/si/${post.slug}.jpg`)} />
-      <meta name="twitter:image:src" content={getAbsoluteURL(`/api/si/${post.slug}.jpg`)} />
+      <meta property="og:image" content={getAbsoluteURL(`/api/si/${encodeURIComponent(post.slug)}`)} />
+      <meta property="og:image:secure_url" content={getAbsoluteURL(`/api/si/${encodeURIComponent(post.slug)}`)} />
+      <meta name="twitter:image:src" content={getAbsoluteURL(`/api/si/${encodeURIComponent(post.slug)}`)} />
     </Head>
   );
 };

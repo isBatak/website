@@ -5,7 +5,7 @@ import fs from 'fs';
 import { getPostBySlug } from '../../../lib/api';
 
 const generateThumbnail = async (post) => {
-  const imageAvatar = fs.readFileSync('./public/assets/blog/authors/isbatak.jpg');
+  const imageAvatar = fs.readFileSync(`./public/${post.author.picture}`);
   const base64Image = new Buffer.from(imageAvatar).toString('base64');
   const dataURI = 'data:image/jpeg;base64,' + base64Image;
   const originalDate = new Date(post.date);
@@ -36,7 +36,7 @@ const generateThumbnail = async (post) => {
           <div class="social-image-footer">
               <div class="social-image-footer-left">
                   <img src="${dataURI}" />
-                  <span>Xaconi.dev · ${formattedDate} </span>
+                  <span>${post.author.name} · ${formattedDate} </span>
               </div>
               <div class="social-image-footer-right">
                   ${tags}
@@ -127,15 +127,13 @@ const generateThumbnail = async (post) => {
 };
 
 export default async (req, res) => {
-  const slug = req.query.slug.replace('.jpg', '');
+  const slug = req.query.slug;
   const post = getPostBySlug(slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage']);
 
-  console.log(post);
-
-  const postThumbnail = generateThumbnail(post);
+  const postThumbnail = await generateThumbnail(post);
 
   res.writeHead(200, {
-    'Cache-Control': 's-maxage=31536000, stale-while-revalidate',
+    'Cache-Control': 'public, s-maxage=31536000, stale-while-revalidate',
     'Content-Type': 'image/png',
     'Content-Length': Buffer.byteLength(postThumbnail),
   });
