@@ -32,13 +32,11 @@ const Post = ({ post, preview }: Props) => {
             <Heading>Loading…</Heading>
           </Container>
         ) : (
-          <>
+          <Container maxW="740px" py={10}>
             <Seo post={post} />
-            <Container maxW="740px" py={10}>
-              <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
-              <PostBody content={post.content} />
-            </Container>
-          </>
+            <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
+            <PostBody content={post.content} />
+          </Container>
         )}
       </Layout>
     </Chakra>
