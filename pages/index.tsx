@@ -1,11 +1,11 @@
 import { NextSeo } from 'next-seo';
 import { Container } from '@chakra-ui/react';
 
-import MoreStories from '../components/more-stories';
-import Layout from '../components/layout';
-import { getAllPosts } from '../lib/api';
-import Post from '../types/post';
-import { Chakra } from '../lib/Chakra';
+import MoreStories from 'components/more-stories';
+import { getAllPosts } from 'lib/api';
+import Post from 'types/post';
+import { Chakra } from 'lib/Chakra';
+import Layout from 'components/shared/layouts/main/layout';
 
 type Props = {
   allPosts: Post[];
