@@ -1,16 +1,6 @@
 import { FC, Fragment } from 'react';
 
-import {
-  Container,
-  Grid,
-  GridItem,
-  Heading,
-  HTMLChakraProps,
-  UnorderedList,
-  Text,
-  ListItem,
-  VStack,
-} from '@chakra-ui/react';
+import { Container, Grid, GridItem, Heading, HTMLChakraProps, UnorderedList, Text, ListItem } from '@chakra-ui/react';
 
 const Title: FC<HTMLChakraProps<'h2'>> = (props) => <Heading as="h2" size="sm" textAlign="end" {...props} />;
 

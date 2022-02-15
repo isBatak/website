@@ -3,8 +3,8 @@ import { NextSeo } from 'next-seo';
 
 import { Chakra } from 'lib/Chakra';
 import Layout from 'components/shared/layouts/main/layout';
-import { AboutHeader } from 'components/features/about/about-header/about-header';
-import { AboutContent } from 'components/features/about/about-content';
+import { AboutHeader } from 'components/features/about/about-header/AboutHeader';
+import { AboutContent } from 'components/features/about/AboutContent';
 
 const CVPage: NextPage = () => {
   return (
