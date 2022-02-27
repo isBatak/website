@@ -5,3 +5,7 @@
 5. Open Graph image generator service https://github.com/vercel/og-image
 6. Comments https://github.com/utterance/utterances
 7. 3D cv effect with chicken drumstick https://codesandbox.io/s/layer-materials-forked-iedfg?file=/src/App.js:561-568 
+
+seo
+1. node canvas - https://github.com/Automattic/node-canvas
+2. canvg - https://github.com/canvg/canvg

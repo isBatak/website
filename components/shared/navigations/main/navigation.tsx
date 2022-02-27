@@ -37,7 +37,7 @@ const NAV_ITEMS: Array<NavItem> = [
     href: '/',
   },
   {
-    label: 'About',
+    label: 'CV',
     href: '/about',
   },
 ];
