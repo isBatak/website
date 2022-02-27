@@ -4,12 +4,12 @@ import { Container, Heading } from '@chakra-ui/react';
 
 import PostBody from '../../components/post-body';
 import PostHeader from '../../components/post-header';
-import Layout from '../../components/layout';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
 import markdownToHtml from '../../lib/markdownToHtml';
 import PostType from '../../types/post';
 import { Chakra } from '../../lib/Chakra';
 import Seo from 'components/seo';
+import Layout from 'components/shared/layouts/main/layout';
 
 type Props = {
   post: PostType;
