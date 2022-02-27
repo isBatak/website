@@ -36,10 +36,10 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'Blog',
     href: '/',
   },
-  {
-    label: 'About',
-    href: '/about',
-  },
+  // {
+  //   label: 'About',
+  //   href: '/about',
+  // },
 ];
 
 const DesktopNav = () => {
