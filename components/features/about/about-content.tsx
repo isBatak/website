@@ -60,7 +60,7 @@ export const AboutContent: FC<IAboutContentProps> = () => {
           <UnorderedList color="gray.500">
             <ListItem>writing clean and maintainable code</ListItem>
             <ListItem>improving development processes</ListItem>
-            <ListItem>educating and facilitating the improvement of team members' skills</ListItem>
+            <ListItem>educating and facilitating the improvement of team members&apos; skills</ListItem>
             <ListItem>refining new features and sprint planning</ListItem>
             <ListItem>active, two-way discussion with clients to find the best solutions for their products</ListItem>
             <ListItem>
