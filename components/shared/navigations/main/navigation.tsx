@@ -28,13 +28,13 @@ interface NavItem {
 }
 
 const NAV_ITEMS: Array<NavItem> = [
-  // {
-  //   label: 'Home',
-  //   href: '/',
-  // },
+  {
+    label: 'About',
+    href: '/about',
+  },
   {
     label: 'Blog',
-    href: '/',
+    href: '/blog',
   },
   {
     label: 'CV',
