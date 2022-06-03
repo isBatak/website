@@ -6,7 +6,7 @@ import * as THREE from 'three';
 import { useState, useMemo } from 'react';
 import { useThree } from '@react-three/fiber';
 import { useGLTF, Float } from '@react-three/drei';
-import { LayerMaterial, Base, Depth, Fresnel, Noise } from 'lamina/vanilla';
+import { LayerMaterial, Color, Depth, Fresnel, Noise } from 'lamina/vanilla';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 
 type GLTFResult = GLTF & {
@@ -25,7 +25,7 @@ const colorB = new THREE.Color('#0F1C4D').convertSRGBToLinear();
 const meatFresnel = new THREE.Color('#E7B473').convertSRGBToLinear();
 const materialMeat = new LayerMaterial({
   layers: [
-    new Base({ color: meatBaseColor }),
+    new Color({ color: meatBaseColor }),
     // new Depth({ colorA: colorA, colorB: colorB, alpha: 0.5, mode: 'normal', near: 0, far: 2, origin: [1, 1, 1] }),
     // new Depth({ colorA: 'purple', colorB: colorB, alpha: 0.5, mode: 'add', near: 3, far: 2, origin: [1, 1, 1] }),
     new Fresnel({ mode: 'add', color: meatFresnel, intensity: 0.3, power: 2.5, bias: 0.0 }),
@@ -37,7 +37,7 @@ const boneBaseColor = new THREE.Color('#ffffff').convertSRGBToLinear();
 const boneFresnel = new THREE.Color('#000000').convertSRGBToLinear();
 const materialBone = new LayerMaterial({
   layers: [
-    new Base({ color: boneBaseColor }),
+    new Color({ color: boneBaseColor }),
     new Noise({ mapping: 'local', type: 'simplex', scale: 1000, colorA: '#ffaf40', colorB: 'black', mode: 'overlay' }),
   ],
 });

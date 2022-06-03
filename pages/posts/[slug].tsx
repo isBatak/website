@@ -33,7 +33,7 @@ const Post = ({ post, preview }: Props) => {
           </Container>
         ) : (
           <Container maxW="740px" py={10}>
-            <Seo post={post} />
+            {/* <Seo post={post} /> */}
             <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
             <PostBody content={post.content} />
           </Container>

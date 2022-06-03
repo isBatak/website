@@ -1,5 +1,4 @@
 import { Box, Image, useColorModeValue } from '@chakra-ui/react';
-import cn from 'classnames';
 import Link from 'next/link';
 
 type Props = {
