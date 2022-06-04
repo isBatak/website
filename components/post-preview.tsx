@@ -1,7 +1,18 @@
 import DateFormater from './date-formater';
 import NextLink from 'next/link';
 import Author from '../types/author';
-import { Avatar, Box, Button, chakra, Flex, useColorModeValue, Text, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import {
+  Avatar,
+  Box,
+  Button,
+  chakra,
+  Flex,
+  Link,
+  useColorModeValue,
+  Text,
+  LinkBox,
+  LinkOverlay,
+} from '@chakra-ui/react';
 
 type Props = {
   title: string;
