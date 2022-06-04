@@ -3,7 +3,7 @@ import { FC, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { LayerMaterial, Depth, Noise } from 'lamina';
 import { Vector3 } from 'three';
-import { Drumsticks } from 'components/features/about/about-header/elements/Drumsticks';
+import { Drumsticks } from './Drumsticks';
 
 const Rig: FC<{ v?: Vector3 }> = ({ v = new THREE.Vector3() }) => {
   return useFrame((state) => {

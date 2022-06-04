@@ -30,6 +30,7 @@ function Noodle() {
     const z = Math.random() * -30;
     const bounds = viewport.getCurrentViewport(camera, [0, 0, z]);
     return [THREE.MathUtils.randFloatSpread(bounds.width), THREE.MathUtils.randFloatSpread(bounds.height * 0.75), z];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewport]);
   return (
     <Float position={position} speed={speed} rotationIntensity={10} floatIntensity={40} dispose={null}>

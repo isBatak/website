@@ -1,7 +1,6 @@
 import { Box, Container, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Background } from 'components/shared/3d/Background';
 import { FC } from 'react';
-
-import { Background } from './elements/Background';
 
 export interface IAboutHeaderProps {}
 

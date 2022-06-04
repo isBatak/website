@@ -10,7 +10,7 @@ const Footer = () => {
           <Box>
             <Text color={useColorModeValue('gray.500', 'gray.200')} fontSize="sm">
               by{' '}
-              <Text as="span" bgGradient="linear(to-l, #fc4a1a,#f7b733)" bgClip="text" fontSize="md" fontWeight="bold">
+              <Text as="span" layerStyle="gradientText" fontSize="md" fontWeight="bold">
                 Ivica Batinić
               </Text>{' '}
               with <Icon as={IoHeart} color="brand.400" />

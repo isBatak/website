@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Text,
   IconButton,
   VStack,
   HStack,
@@ -15,6 +14,7 @@ import {
   Heading,
   useColorMode,
   Button,
+  Text,
 } from '@chakra-ui/react';
 
 import NextLink from 'next/link';
@@ -28,17 +28,13 @@ interface NavItem {
 }
 
 const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: 'About',
-    href: '/about',
-  },
+  // {
+  //   label: 'About',
+  //   href: '/about',
+  // },
   {
     label: 'Blog',
     href: '/blog',
-  },
-  {
-    label: 'CV',
-    href: '/about',
   },
 ];
 
@@ -47,22 +43,13 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
 
   return (
-    <HStack spacing={4}>
+    <HStack spacing={2}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <NextLink href={navItem.href ?? '#'} passHref>
-            <Link
-              p={2}
-              fontSize={'sm'}
-              fontWeight="black"
-              color={linkColor}
-              _hover={{
-                textDecoration: 'underline',
-                color: linkHoverColor,
-              }}
-            >
+            <Button as="a" p={3} fontSize={'sm'} fontWeight="black" variant="ghost" borderRadius="full" size="xs">
               {navItem.label}
-            </Link>
+            </Button>
           </NextLink>
         </Box>
       ))}
@@ -101,15 +88,7 @@ export const Navigation = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box
-      as="header"
-      w="full"
-      position="sticky"
-      top="0"
-      backdropFilter="blur(5px)"
-      zIndex="sticky"
-      borderBottomWidth="1px"
-    >
+    <Box as="header" w="full" position="sticky" top="0" backdropFilter="blur(5px)" zIndex="sticky">
       <Container py="0" px="0" flex="0">
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
@@ -122,10 +101,12 @@ export const Navigation = () => {
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
             <NextLink href="/" passHref>
-              <Flex as="a" alignItems="flex-end" sx={{ gap: 10 }}>
-                <Image src="/assets/logo.svg" alt="logo" w="30px" />
-                <Heading color={useColorModeValue('gray.800', 'white')}>isBatak</Heading>
-              </Flex>
+              <Text as="a" _dark={{ color: 'white' }} _light={{ color: 'gray.800' }} fontSize="2xl" fontWeight="bold">
+                <Text as="span" layerStyle="gradientText">
+                  _is
+                </Text>
+                Batak
+              </Text>
             </NextLink>
           </Flex>
 

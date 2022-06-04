@@ -8,8 +8,7 @@ const theme = extendTheme({
   fonts: {
     heading:
       'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
-    body:
-      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+    body: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
   },
   components: {
     // Button,
@@ -28,6 +27,12 @@ const theme = extendTheme({
       700: '#9b4202',
       800: '#823702',
       900: '#502201',
+    },
+  },
+  layerStyles: {
+    gradientText: {
+      bgGradient: 'linear(to-l, #fc4a1a,#f7b733)',
+      bgClip: 'text',
     },
   },
 });

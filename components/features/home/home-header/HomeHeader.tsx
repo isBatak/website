@@ -1,0 +1,30 @@
+import { Box, Container, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { FC } from 'react';
+
+export interface IHomeHeaderProps {}
+
+export const HomeHeader: FC<IHomeHeaderProps> = () => {
+  return (
+    <Container py="5" maxW="2xl">
+      <Flex py="4" px="8" align="center" position="relative" direction={{ base: 'column', md: 'row' }} gap="5">
+        <Box flexShrink={0}>
+          <Image src="/assets/logo.svg" alt="isBatak" />
+        </Box>
+        <Box textAlign={{ base: 'center', md: 'left' }}>
+          <Heading>Hello! 👋</Heading>
+          <Text>
+            My name is{' '}
+            <Text as="span" layerStyle="gradientText" fontSize="md" fontWeight="bold">
+              Ivica Batinić
+            </Text>{' '}
+            and I&apos;m a React Developer from Croatia 🇭🇷
+          </Text>
+          <Text>
+            This is my personal website, where I write about the things I&apos;m working on and share what I&apos;ve
+            learned.
+          </Text>
+        </Box>
+      </Flex>
+    </Container>
+  );
+};
