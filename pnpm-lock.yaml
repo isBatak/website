@@ -8,6 +8,7 @@ specifiers:
   '@emotion/react': ^11.9.0
   '@emotion/styled': ^11.8.1
   '@next/bundle-analyzer': ^12.1.6
+  '@prettier/plugin-xml': ^2.2.0
   '@react-three/babel': ^0.1.0
   '@react-three/drei': ^9.11.3
   '@react-three/fiber': ^8.0.22
@@ -37,6 +38,7 @@ specifiers:
   next: ^12.1.0
   next-compose-plugins: ^2.2.1
   next-seo: ^4
+  prettier: ^2.6.2
   puppeteer: ^10.2.0
   react: ^18.1.0
   react-dom: ^18.1.0
@@ -77,6 +79,7 @@ dependencies:
 
 devDependencies:
   '@chakra-ui/cli': 2.0.0_7mvreszf4wwmovnfi4srbo6mna
+  '@prettier/plugin-xml': 2.2.0
   '@react-three/babel': 0.1.0_three@0.141.0
   '@storybook/addon-a11y': 6.5.6_ef5jwxihqo6n7gxfmzogljlgcm
   '@storybook/addon-actions': 6.5.6_ef5jwxihqo6n7gxfmzogljlgcm
@@ -95,6 +98,7 @@ devDependencies:
   '@types/xmldom': 0.1.31
   eslint: 8.17.0
   eslint-config-next: 12.1.6_qwqcuvhue6diaz4jqbkm5dp3pa
+  prettier: 2.6.2
   puppeteer: 10.4.0
   storybook-addon-performance: 0.16.1_4hkwgow5356cdmtz5c5vaxngqm
 
@@ -3875,6 +3879,13 @@ packages:
     resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
     dev: false
 
+  /@prettier/plugin-xml/2.2.0:
+    resolution: {integrity: sha512-UWRmygBsyj4bVXvDiqSccwT1kmsorcwQwaIy30yVh8T+Gspx4OlC0shX1y+ZuwXZvgnafmpRYKks0bAu9urJew==}
+    dependencies:
+      '@xml-tools/parser': 1.0.11
+      prettier: 2.6.2
+    dev: true
+
   /@radix-ui/popper/0.1.0:
     resolution: {integrity: sha512-uzYeElL3w7SeNMuQpXiFlBhTT+JyaNMCwDfjKkrzugEcYrf5n52PHqncNdQPUtR42hJh8V9FsqyEDbDxkeNjJQ==}
     dependencies:
@@ -6436,6 +6447,12 @@ packages:
       react: 18.1.0
     dev: false
 
+  /@xml-tools/parser/1.0.11:
+    resolution: {integrity: sha512-aKqQ077XnR+oQtHJlrAflaZaL7qZsulWc/i/ZEooar5JiWj1eLt0+Wg28cpa+XLney107wXqneC+oG1IZvxkTA==}
+    dependencies:
+      chevrotain: 7.1.1
+    dev: true
+
   /@xstate/react/1.6.3_vt3spmxacary4zsdpxuivo3veu:
     resolution: {integrity: sha512-NCUReRHPGvvCvj2yLZUTfR0qVp6+apc8G83oXSjN4rl89ZjyujiKrTff55bze/HrsvCsP/sUJASf2n0nzMF1KQ==}
     peerDependencies:
@@ -7638,6 +7655,12 @@ packages:
       lodash: 4.17.21
       regexp-to-ast: 0.5.0
     dev: false
+
+  /chevrotain/7.1.1:
+    resolution: {integrity: sha512-wy3mC1x4ye+O+QkEinVJkPf5u2vsrDIYW9G7ZuwFl6v/Yu0LwUuT2POsb+NUWApebyxfkQq6+yDfRExbnI5rcw==}
+    dependencies:
+      regexp-to-ast: 0.5.0
+    dev: true
 
   /chokidar/2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
@@ -13704,7 +13727,6 @@ packages:
 
   /regexp-to-ast/0.5.0:
     resolution: {integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==}
-    dev: false
 
   /regexp.prototype.flags/1.4.3:
     resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
