@@ -9,7 +9,7 @@ import markdownToHtml from '../../lib/markdownToHtml';
 import PostType from '../../types/post';
 import { Chakra } from '../../lib/Chakra';
 import Seo from 'components/seo';
-import Layout from 'components/shared/layouts/main/layout';
+import { Layout } from 'components/shared/layouts/MainLayout/MainLayout';
 
 type Props = {
   post: PostType;

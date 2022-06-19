@@ -24,7 +24,7 @@ import { Chakra } from '../../lib/Chakra';
 import { Reward } from '../../lib/rewards/Reward';
 import { IsBatak } from '../../components/is-batak';
 import { IsMelon } from '../../components/is-melon';
-import Layout from 'components/shared/layouts/main/layout';
+import { Layout } from 'components/shared/layouts/MainLayout/MainLayout';
 
 const defaults = {
   lifetime: 200,

@@ -4,7 +4,7 @@ import { Container, StackDivider, VStack } from '@chakra-ui/react';
 import { getAllPosts } from 'lib/api';
 import Post from 'types/post';
 import { Chakra } from 'lib/Chakra';
-import Layout from 'components/shared/layouts/main/layout';
+import { Layout } from 'components/shared/layouts/MainLayout/MainLayout';
 import { NextPage } from 'next';
 import PostPreview from 'components/post-preview';
 

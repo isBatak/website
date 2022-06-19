@@ -1,21 +1,21 @@
-import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
-
+import { Container } from '@chakra-ui/react';
+import { Career } from 'components/features/about/career/Career';
+import { Education } from 'components/features/about/education/Education';
+import { Layout } from 'components/shared/layouts/MainLayout/MainLayout';
 import { Chakra } from 'lib/Chakra';
-import Layout from 'components/shared/layouts/main/layout';
-import { AboutHeader } from 'components/features/about/about-header/AboutHeader';
-import { AboutContent } from 'components/features/about/AboutContent';
+import { NextPage } from 'next';
 
-const CVPage: NextPage = () => {
+const AboutPage: NextPage = () => {
   return (
     <Chakra>
       <Layout>
-        <NextSeo title="About" />
-        <AboutHeader />
-        <AboutContent />
+        <Container maxW="3xl" py={{ base: 3, md: 10 }}>
+          <Career />
+          <Education mt={10} />
+        </Container>
       </Layout>
     </Chakra>
   );
 };
 
-export default CVPage;
+export default AboutPage;

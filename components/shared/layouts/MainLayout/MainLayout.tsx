@@ -10,7 +10,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ preview, children }: Props) => {
+export const Layout = ({ preview, children }: Props) => {
   return (
     <Flex minH="fill-available" direction="column" className="layout">
       <Meta />
@@ -23,5 +23,3 @@ const Layout = ({ preview, children }: Props) => {
     </Flex>
   );
 };
-
-export default Layout;
