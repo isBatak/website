@@ -18,7 +18,7 @@ export const Career: FC<ICareerProps> = (props) => {
 
       <VStack mt={5} spacing={3} align="stretch" divider={<StackDivider />}>
         <CompanyCard
-          logo={<Infinum w="full" sx={{ aspectRatio: '120/80' }} preserveAspectRatio="xMidYMid meet" />}
+          logo={<Infinum sx={{ aspectRatio: '120/80' }} preserveAspectRatio="xMaxYMid slice" />}
           name="Infinum"
           position="Lead React Engineer"
           period="Jun 2015 - present"
@@ -29,7 +29,7 @@ export const Career: FC<ICareerProps> = (props) => {
           from feature refinement to testing working with SCRUM methodology
         </CompanyCard>
         <CompanyCard
-          logo={<Videa w="full" sx={{ aspectRatio: '120/80' }} />}
+          logo={<Videa sx={{ aspectRatio: '120/80' }} />}
           name="Videa d.o.o."
           position="Web Developer / Android & iOS Developer / 3D Designer"
           period="Oct 2012 - Mar 2015"
@@ -39,7 +39,7 @@ export const Career: FC<ICareerProps> = (props) => {
           materials.
         </CompanyCard>
         <CompanyCard
-          logo={<GeneralSecurity w="full" sx={{ aspectRatio: '120/80' }} />}
+          logo={<GeneralSecurity sx={{ aspectRatio: '120/80' }} />}
           name="General Security"
           position="Web Developer / Web Administrator / Designer"
           period="Jun 2011 - Oct 2012"
