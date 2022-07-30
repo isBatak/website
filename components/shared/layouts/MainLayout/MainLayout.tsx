@@ -8,12 +8,14 @@ import { Navigation } from 'components/shared/navigations/main/navigation';
 type Props = {
   preview?: boolean;
   children: React.ReactNode;
+  background?: React.ReactNode;
 };
 
-export const Layout = ({ preview, children }: Props) => {
+export const Layout = ({ preview, children, background }: Props) => {
   return (
     <Flex minH="fill-available" direction="column" className="layout">
       <Meta />
+      {background}
       <Navigation />
       <Box as="main" minH="0" flex="1">
         {preview ? <PreviewAlert /> : null}
