@@ -12,6 +12,7 @@ const Seo = ({ post }: { post: PostType }) => {
         property="og:image"
         content={encodeURI(`${baseURL}/api/og?title=${post.title}&author=${post.author.name}&createdAt=${createdAt}`)}
       />
+      <meta name="og:type" content="summary" />
     </Head>
   );
 };
