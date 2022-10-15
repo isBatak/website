@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import PostType from 'types/post';
 import { format } from 'date-fns';
+import { baseURL } from 'constants/env';
 
 const Seo = ({ post }: { post: PostType }) => {
-  const baseURL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
   const createdAt = format(new Date(post.date), 'LLLL dd, yyyy');
   return (
     <Head>
