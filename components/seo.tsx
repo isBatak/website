@@ -13,6 +13,7 @@ const Seo = ({ post }: { post: PostType }) => {
         content={encodeURI(`${baseURL}/api/og?title=${post.title}&author=${post.author.name}&createdAt=${createdAt}`)}
       />
       <meta name="og:type" content="summary_large_image" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="og:title" content={post.title} />
     </Head>
   );
