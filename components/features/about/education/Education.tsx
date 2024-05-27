@@ -1,19 +1,16 @@
-import { Box, Heading, Icon, StackDivider, StyleProps, VStack } from '@chakra-ui/react';
+import { Box, type BoxProps, Heading, VStack, StackSeparator } from '@chakra-ui/react';
 import { EducationCard } from 'components/features/about/education/Education.elements';
-import { FC } from 'react';
-import { IoSchoolOutline } from 'react-icons/io5';
 
-export interface IEducationProps extends StyleProps {}
+export interface IEducationProps extends BoxProps {}
 
-export const Education: FC<IEducationProps> = (props) => {
+export const Education = (props: IEducationProps) => {
   return (
     <Box {...props}>
       <Heading as="h3" size="lg">
         Education
-        {/* <Icon as={IoSchoolOutline} display="inline" verticalAlign="middle" /> */}
       </Heading>
 
-      <VStack mt={5} spacing={3} align="stretch" divider={<StackDivider />}>
+      <VStack mt={5} gap={3} align="stretch" separator={<StackSeparator />}>
         <EducationCard
           period="2010 - 2012"
           name="Faculty of Graphic Arts, Zagreb"

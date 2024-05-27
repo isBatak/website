@@ -1,24 +1,9 @@
-import {
-  Box,
-  Flex,
-  IconButton,
-  VStack,
-  HStack,
-  Collapse,
-  Icon,
-  Link,
-  useColorModeValue,
-  useDisclosure,
-  Container,
-  Image,
-  Heading,
-  useColorMode,
-  Button,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Flex, IconButton, VStack, HStack, Collapse, Icon, Container, Button, Text } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { useTheme } from 'next-themes';
 
 import NextLink from 'next/link';
-import { IoMoon, IoSunny, IoClose, IoMenu, IoArrowDown } from 'react-icons/io5';
+import { IoMoon, IoSunny, IoClose, IoMenu } from 'react-icons/io5';
 
 interface NavItem {
   label: string;
@@ -39,11 +24,8 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('black', 'gray.200');
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
-
   return (
-    <HStack spacing={2}>
+    <HStack gap={2}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <NextLink href={navItem.href ?? '#'} passHref>
@@ -59,7 +41,7 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <VStack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+    <VStack bg="white" _dark={{ bg: 'gray.800' }} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <NextLink key={navItem.label} href={navItem.href ?? '#'} passHref>
           <Button as="a" w="full">
@@ -72,15 +54,16 @@ const MobileNav = () => {
 };
 
 const ModeToggle = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { theme, setTheme } = useTheme();
+
+  const toggleColorMode = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   return (
-    <IconButton
-      variant="icon"
-      onClick={toggleColorMode}
-      aria-label="Toggle dark mode"
-      icon={colorMode === 'light' ? <IoMoon /> : <IoSunny />}
-    />
+    <IconButton variant="ghost" onClick={toggleColorMode} aria-label="Toggle dark mode">
+      {theme === 'light' ? <IoMoon /> : <IoSunny />}
+    </IconButton>
   );
 };
 
@@ -88,25 +71,13 @@ export const Navigation = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box
-      as="header"
-      w="full"
-      position="sticky"
-      top="0"
-      backdropFilter="blur(5px)"
-      zIndex="sticky"
-      // _light={{ bg: 'whiteAlpha.500' }}
-      // _dark={{ bg: 'blackAlpha.500' }}
-    >
+    <Box as="header" w="full" position="sticky" top="0" backdropFilter="blur(5px)" zIndex="sticky">
       <Container py="0" px="0" flex="0">
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
-            <IconButton
-              onClick={onToggle}
-              icon={isOpen ? <Icon as={IoClose} w={3} h={3} /> : <Icon as={IoMenu} w={5} h={5} />}
-              variant={'ghost'}
-              aria-label={'Toggle Navigation'}
-            />
+            <IconButton onClick={onToggle} variant={'ghost'} aria-label={'Toggle Navigation'}>
+              {isOpen ? <Icon as={IoClose} w={3} h={3} /> : <Icon as={IoMenu} w={5} h={5} />}
+            </IconButton>
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
             <NextLink href="/" passHref>
@@ -119,7 +90,7 @@ export const Navigation = () => {
             </NextLink>
           </Flex>
 
-          <HStack flex={{ base: 1, md: 0 }} justify={'flex-end'} align="center" spacing={6}>
+          <HStack flex={{ base: 1, md: 0 }} justify={'flex-end'} align="center" gap={6}>
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>

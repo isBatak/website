@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export interface ICompanyCard {
   logo?: ReactNode;
@@ -9,7 +9,7 @@ export interface ICompanyCard {
   children?: ReactNode;
 }
 
-export const CompanyCard: FC<ICompanyCard> = ({ logo, name, period, position, children }) => (
+export const CompanyCard = ({ logo, name, period, position, children }: ICompanyCard) => (
   <Flex gap={3} align={{ base: 'stretch', md: 'flex-start' }} direction={{ base: 'column', md: 'row' }}>
     <Box
       flexBasis={{ base: 'none', md: '120px' }}

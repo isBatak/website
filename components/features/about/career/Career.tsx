@@ -1,22 +1,19 @@
-import { Box, Heading, Icon, StackDivider, StyleProps, VStack } from '@chakra-ui/react';
+import { Box, Heading, StackSeparator, type BoxProps, VStack } from '@chakra-ui/react';
 import { CompanyCard } from 'components/features/about/career/Career.elements';
 import { GeneralSecurity } from 'components/shared/svg/GeneralSecurity';
 import { Infinum } from 'components/shared/svg/Infinum';
 import { Videa } from 'components/shared/svg/Videa';
-import { FC } from 'react';
-import { BsBriefcase } from 'react-icons/bs';
 
-export interface ICareerProps extends StyleProps {}
+export interface ICareerProps extends BoxProps {}
 
-export const Career: FC<ICareerProps> = (props) => {
+export const Career = (props: ICareerProps) => {
   return (
     <Box {...props}>
       <Heading as="h3" size="lg">
         Career
-        {/* <Icon as={BsBriefcase} display="inline" verticalAlign="middle" /> */}
       </Heading>
 
-      <VStack mt={5} spacing={3} align="stretch" divider={<StackDivider />}>
+      <VStack mt={5} gap={3} align="stretch" separator={<StackSeparator />}>
         <CompanyCard
           logo={<Infinum sx={{ aspectRatio: '120/80' }} preserveAspectRatio="xMaxYMid slice" />}
           name="Infinum"
