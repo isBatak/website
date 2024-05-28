@@ -13,7 +13,6 @@ const AboutPage: NextPage = () => {
           <Career />
           <Education mt={10} />
         </Container>
-        test
       </Layout>
     </Chakra>
   );

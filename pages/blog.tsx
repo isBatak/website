@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import { Container, StackDivider, VStack } from '@chakra-ui/react';
+import { Container, StackSeparator, VStack } from '@chakra-ui/react';
 
 import { getAllPosts } from 'lib/api';
 import Post from 'types/post';
@@ -19,7 +19,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ allPosts }) => {
         <NextSeo title="Personal Blog" />
         <Container maxW="2xl" py="5">
           {allPosts.length > 0 && (
-            <VStack as="section" align="stretch" spacing={8} py={5} divider={<StackDivider borderColor="gray.200" />}>
+            <VStack as="section" align="stretch" gap={8} py={5} separator={<StackSeparator borderColor="gray.200" />}>
               {allPosts.map((post) => (
                 <PostPreview
                   key={post.slug}

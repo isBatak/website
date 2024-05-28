@@ -68,10 +68,10 @@ const Rewards = ({ allPosts }: Props) => {
 
           <RadioGroup my="5" value={type} onChange={(type) => setType(type as any)}>
             <Stack spacing={5} direction="row">
-              <Radio colorScheme="brand" value="confetti">
+              <Radio colorPalette="brand" value="confetti">
                 confetti
               </Radio>
-              <Radio colorScheme="brand" value="emoji">
+              <Radio colorPalette="brand" value="emoji">
                 emoji
               </Radio>
             </Stack>
@@ -91,7 +91,7 @@ const Rewards = ({ allPosts }: Props) => {
                     flex="1"
                     minW="0"
                     defaultValue={value}
-                    colorScheme="brand"
+                    colorPalette="brand"
                     min={minMaxStep[0]}
                     max={minMaxStep[1]}
                     step={minMaxStep[2]}

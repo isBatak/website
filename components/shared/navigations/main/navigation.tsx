@@ -28,11 +28,9 @@ const DesktopNav = () => {
     <HStack gap={2}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <NextLink href={navItem.href ?? '#'} passHref>
-            <Button as="a" p={3} fontSize={'sm'} fontWeight="black" variant="ghost" borderRadius="full" size="xs">
-              {navItem.label}
-            </Button>
-          </NextLink>
+          <Button asChild p={3} fontSize={'sm'} fontWeight="black" variant="ghost" borderRadius="full" size="xs">
+            <NextLink href={navItem.href ?? '#'}>{navItem.label}</NextLink>
+          </Button>
         </Box>
       ))}
     </HStack>
@@ -76,18 +74,26 @@ export const Navigation = () => {
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
             <IconButton onClick={onToggle} variant={'ghost'} aria-label={'Toggle Navigation'}>
-              {isOpen ? <Icon as={IoClose} w={3} h={3} /> : <Icon as={IoMenu} w={5} h={5} />}
+              {isOpen ? (
+                <Icon asChild w={3} h={3}>
+                  <IoClose />
+                </Icon>
+              ) : (
+                <Icon asChild w={5} h={5}>
+                  <IoMenu />
+                </Icon>
+              )}
             </IconButton>
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <NextLink href="/" passHref>
-              <Text as="a" _dark={{ color: 'white' }} _light={{ color: 'gray.800' }} fontSize="2xl" fontWeight="bold">
+            <Text asChild _dark={{ color: 'white' }} _light={{ color: 'gray.800' }} fontSize="2xl" fontWeight="bold">
+              <NextLink href="/">
                 <Text as="span" layerStyle="gradientText">
                   _is
                 </Text>
                 Batak
-              </Text>
-            </NextLink>
+              </NextLink>
+            </Text>
           </Flex>
 
           <HStack flex={{ base: 1, md: 0 }} justify={'flex-end'} align="center" gap={6}>
@@ -98,9 +104,9 @@ export const Navigation = () => {
           </HStack>
         </Flex>
 
-        <Collapse in={isOpen} animateOpacity>
+        {/* <Collapse in={isOpen} animateOpacity>
           <MobileNav />
-        </Collapse>
+        </Collapse> */}
       </Container>
     </Box>
   );
