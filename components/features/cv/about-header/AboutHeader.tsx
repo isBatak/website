@@ -33,7 +33,12 @@ export const AboutHeader: FC<IAboutHeaderProps> = () => {
             />
           </Box>
           <Box zIndex="1" textAlign={{ base: 'center', md: 'left' }}>
-            <Heading as="h1" color="white" textShadow="0 1px 5px rgba(0,0,0,0.5)">
+            <Heading
+              as="h1"
+              color="white"
+              textShadow="0 1px 5px rgba(0,0,0,0.5)"
+              textStyle={{ base: '3xl', md: '4xl' }}
+            >
               Ivica Batinić
             </Heading>
             <Text color="white" fontWeight="bold" textShadow="0 1px 5px rgba(0,0,0,0.5)">

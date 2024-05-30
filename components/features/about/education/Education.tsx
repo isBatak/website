@@ -6,7 +6,7 @@ export interface IEducationProps extends BoxProps {}
 export const Education = (props: IEducationProps) => {
   return (
     <Box {...props}>
-      <Heading as="h3" size="lg">
+      <Heading as="h3" textStyle={{ base: '2xl', md: '3xl' }}>
         Education
       </Heading>
 

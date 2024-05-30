@@ -13,7 +13,7 @@ type Props = {
 const PostHeader = ({ title, coverImage, date, author }: Props) => {
   return (
     <Box>
-      <Heading>{title}</Heading>
+      <Heading textStyle={{ base: '3xl', md: '4xl' }}>{title}</Heading>
 
       <Flex alignItems="center">
         <Flex alignItems="center">

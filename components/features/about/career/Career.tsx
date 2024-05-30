@@ -9,7 +9,7 @@ export interface ICareerProps extends BoxProps {}
 export const Career = (props: ICareerProps) => {
   return (
     <Box {...props}>
-      <Heading as="h3" size="lg">
+      <Heading as="h3" textStyle={{ base: '2xl', md: '3xl' }}>
         Career
       </Heading>
 

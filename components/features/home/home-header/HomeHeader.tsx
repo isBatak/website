@@ -11,7 +11,9 @@ export const HomeHeader: FC<IHomeHeaderProps> = () => {
           <Image src="/assets/logo.svg" alt="isBatak" />
         </Box>
         <Box textAlign={{ base: 'center', md: 'left' }}>
-          <Heading mb={2}>Hello! 👋</Heading>
+          <Heading mb={2} textStyle={{ base: '3xl', md: '4xl' }}>
+            Hello! 👋
+          </Heading>
           <Text>
             My name is{' '}
             <Text as="span" layerStyle="gradientText" fontSize="md" fontWeight="bold">

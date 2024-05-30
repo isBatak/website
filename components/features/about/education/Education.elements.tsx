@@ -13,7 +13,7 @@ export const EducationCard: FC<IEducationCard> = ({ period, name, title }) => (
       {period}
     </Text>
     <Box>
-      <Heading as="h3" size="md">
+      <Heading as="h3" textStyle="xl">
         {name}{' '}
       </Heading>{' '}
       <Text>{title}</Text>

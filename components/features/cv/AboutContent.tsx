@@ -1,8 +1,8 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, ReactNode } from 'react';
 
-import { Container, Grid, GridItem, Heading, HTMLChakraProps, UnorderedList, Text, ListItem } from '@chakra-ui/react';
+import { Container, Grid, GridItem, Heading, HTMLChakraProps, List, Text } from '@chakra-ui/react';
 
-const Title: FC<HTMLChakraProps<'h2'>> = (props) => <Heading as="h2" size="sm" textAlign="end" {...props} />;
+const Title: FC<HTMLChakraProps<'h2'>> = (props) => <Heading as="h2" textStyle="md" textAlign="end" {...props} />;
 
 const TitleRow: FC<{ title: string }> = ({ title }) => (
   <Fragment>
@@ -17,7 +17,7 @@ const Label: FC<HTMLChakraProps<'p'>> = (props) => (
   <Text as="p" fontWeight="medium" color="gray.500" textAlign="end" {...props} />
 );
 
-const InfoRow: FC<{ label: string }> = ({ label, children }) => (
+const InfoRow: FC<{ label: string; children: ReactNode }> = ({ label, children }) => (
   <Fragment>
     <GridItem>
       <Label>{label}</Label>
@@ -47,17 +47,17 @@ export const AboutContent: FC<IAboutContentProps> = () => {
         <TitleRow title="WORK EXPERIENCE" />
         <InfoRow label="Apr 2019 — present">
           <Text mb="2">Infinum, Lead React Engineer</Text>
-          <UnorderedList color="gray.500">
-            <ListItem>writing clean and maintainable code</ListItem>
-            <ListItem>improving development processes</ListItem>
-            <ListItem>educating and facilitating the improvement of team members&apos; skills</ListItem>
-            <ListItem>refining new features and sprint planning</ListItem>
-            <ListItem>active, two-way discussion with clients to find the best solutions for their products</ListItem>
-            <ListItem>
+          <List.Root as="ul" color="gray.500">
+            <List.Item>writing clean and maintainable code</List.Item>
+            <List.Item>improving development processes</List.Item>
+            <List.Item>educating and facilitating the improvement of team members&apos; skills</List.Item>
+            <List.Item>refining new features and sprint planning</List.Item>
+            <List.Item>active, two-way discussion with clients to find the best solutions for their products</List.Item>
+            <List.Item>
               actively participating in all parts of the development process - from feature refinement to testing
-            </ListItem>
-            <ListItem>working with SCRUM methodology</ListItem>
-          </UnorderedList>
+            </List.Item>
+            <List.Item>working with SCRUM methodology</List.Item>
+          </List.Root>
         </InfoRow>
 
         <InfoRow label="Jun 2015  - Apr 2019">
@@ -75,12 +75,12 @@ export const AboutContent: FC<IAboutContentProps> = () => {
           <Text mb="2" mt="3">
             Responsibilities:
           </Text>
-          <UnorderedList color="gray.500">
-            <ListItem>built advanced Google Maps integrations with React</ListItem>
-            <ListItem>built custom markers and clustering logic for Google Maps</ListItem>
-            <ListItem>implemented custom theming and component system to support white labeling</ListItem>
-            <ListItem>advanced usage of React patterns (hooks, stale while revalidate)</ListItem>
-          </UnorderedList>
+          <List.Root as="ul" color="gray.500">
+            <List.Item>built advanced Google Maps integrations with React</List.Item>
+            <List.Item>built custom markers and clustering logic for Google Maps</List.Item>
+            <List.Item>implemented custom theming and component system to support white labeling</List.Item>
+            <List.Item>advanced usage of React patterns (hooks, stale while revalidate)</List.Item>
+          </List.Root>
           <br />
           <br />
           <Text fontWeight="semibold">Eva web - PoC</Text>
@@ -93,18 +93,18 @@ export const AboutContent: FC<IAboutContentProps> = () => {
           <Text mb="2" mt="3">
             Responsibilities:
           </Text>
-          <UnorderedList color="gray.500">
-            <ListItem>designed architecture for the web banking app in React</ListItem>
-            <ListItem>
+          <List.Root as="ul" color="gray.500">
+            <List.Item>designed architecture for the web banking app in React</List.Item>
+            <List.Item>
               built the integration with the existing banking API already used on the mobile native applications
-            </ListItem>
-            <ListItem>developed a design system architecture that can be used across many applications</ListItem>
-            <ListItem>
+            </List.Item>
+            <List.Item>developed a design system architecture that can be used across many applications</List.Item>
+            <List.Item>
               developed a global store with MobX library to optimally synchronize the application state with React
               components
-            </ListItem>
-            <ListItem>worked with transaction and money transfer API calls</ListItem>
-          </UnorderedList>
+            </List.Item>
+            <List.Item>worked with transaction and money transfer API calls</List.Item>
+          </List.Root>
         </InfoRow>
       </Grid>
     </Container>

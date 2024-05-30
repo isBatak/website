@@ -19,3 +19,5 @@ const config = mergeConfigs(defaultConfig, {
 });
 
 export const system = createSystem(config);
+
+console.log(config);

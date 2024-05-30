@@ -21,7 +21,7 @@ export const CompanyCard = ({ logo, name, period, position, children }: ICompany
       {logo}
     </Box>
     <Box>
-      <Heading as="h3" size="md">
+      <Heading as="h3" textStyle="xl">
         {name}
       </Heading>
       <Text fontSize="sm">{position}</Text>
