@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@chakra-ui/hooks": "^2.2.1",
-    "@chakra-ui/react": "3.0.0-next.0",
+    "@chakra-ui/react": "3.0.0-next.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@next/bundle-analyzer": "^12.1.6",
@@ -38,7 +38,7 @@
     "three": "^0.141.0"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "3.0.0-next.0",
+    "@chakra-ui/cli": "3.0.0-next.1",
     "@prettier/plugin-xml": "^2.2.0",
     "@react-three/babel": "^0.1.0",
     "@storybook/addon-a11y": "^6.5.6",
