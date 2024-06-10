@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, VStack, HStack, Collapse, Icon, Container, Button, Text } from '@chakra-ui/react';
+import { Box, Flex, IconButton, VStack, HStack, Icon, Container, Button, Text, Collapsible } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { useTheme } from 'next-themes';
 
@@ -103,10 +103,19 @@ export const Navigation = () => {
             <ModeToggle />
           </HStack>
         </Flex>
-
-        {/* <Collapse in={isOpen} animateOpacity>
-          <MobileNav />
-        </Collapse> */}
+        <Collapsible.Root open={isOpen}>
+          <Collapsible.Content
+            overflow="hidden"
+            _open={{
+              animation: 'collapse-in 250ms',
+            }}
+            _closed={{
+              animation: 'collapse-out 250ms',
+            }}
+          >
+            <MobileNav />
+          </Collapsible.Content>
+        </Collapsible.Root>
       </Container>
     </Box>
   );
