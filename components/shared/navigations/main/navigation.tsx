@@ -41,11 +41,9 @@ const MobileNav = () => {
   return (
     <VStack bg="white" _dark={{ bg: 'gray.800' }} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
-        <NextLink key={navItem.label} href={navItem.href ?? '#'} passHref>
-          <Button as="a" w="full">
-            {navItem.label}
-          </Button>
-        </NextLink>
+        <Button key={navItem.label} w="full" asChild>
+          <NextLink href={navItem.href ?? '#'}>{navItem.label}</NextLink>
+        </Button>
       ))}
     </VStack>
   );
@@ -88,7 +86,14 @@ export const Navigation = () => {
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
             <Text asChild _dark={{ color: 'white' }} _light={{ color: 'gray.800' }} fontSize="2xl" fontWeight="bold">
               <NextLink href="/">
-                <Text as="span" layerStyle="gradientText">
+                <Text
+                  as="span"
+                  bgGradient="to-l"
+                  gradientFrom="#fc4a1a"
+                  gradientTo="#f7b733"
+                  bgClip="text"
+                  color="transparent"
+                >
                   _is
                 </Text>
                 Batak
@@ -100,7 +105,7 @@ export const Navigation = () => {
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>
-            <ModeToggle />
+            {/* <ModeToggle /> */}
           </HStack>
         </Flex>
         <Collapsible.Root open={isOpen}>

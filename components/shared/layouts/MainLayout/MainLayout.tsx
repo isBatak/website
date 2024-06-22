@@ -17,7 +17,7 @@ export const Layout = ({ preview, children, background }: Props) => {
       <Meta />
       {background}
       <Navigation />
-      <Box as="main" minH="0" flex="1">
+      <Box as="main" minH="0" flex="1" zIndex="1">
         {preview ? <PreviewAlert /> : null}
         {children}
       </Box>

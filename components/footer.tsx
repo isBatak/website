@@ -4,13 +4,22 @@ import { IoHeart } from 'react-icons/io5';
 
 const Footer = () => {
   return (
-    <Box as="footer" py="5" flex="0">
+    <Box as="footer" py="5" flex="0" zIndex="1">
       <Container>
         <Flex justifyContent="space-between" alignItems="center">
           <Box>
             <Text color="gray.500" _dark={{ color: 'gray.200' }} fontSize="sm">
               by{' '}
-              <Text as="span" layerStyle="gradientText" fontSize="md" fontWeight="bold">
+              <Text
+                as="span"
+                bgGradient="to-l"
+                gradientFrom="#fc4a1a"
+                gradientTo="#f7b733"
+                bgClip="text"
+                color="transparent"
+                fontSize="md"
+                fontWeight="bold"
+              >
                 Ivica Batinić
               </Text>{' '}
               with <Icon as={IoHeart} color="brand.400" />
