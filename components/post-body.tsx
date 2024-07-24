@@ -11,20 +11,20 @@ const PostBody = ({ content }: Props) => {
       css={{
         mt: 10,
 
-        'p, ul, ol, blockquote': {
+        '& p, & ul, & ol, & blockquote': {
           my: 6,
         },
-        h2: {
+        '& h2': {
           fontSize: '3xl',
           mt: 12,
           mb: 4,
         },
-        h3: {
+        '& h3': {
           fontSize: '2xl',
           mt: 8,
           mb: 4,
         },
-        code: {
+        '& p code': {
           bg: 'gray.100',
           p: '2px',
           borderRadius: 3,
@@ -32,7 +32,7 @@ const PostBody = ({ content }: Props) => {
             bg: 'whiteAlpha.400',
           },
         },
-        pre: {
+        '& pre': {
           p: 5,
           borderRadius: 5,
           bg: 'gray.100',
@@ -44,11 +44,11 @@ const PostBody = ({ content }: Props) => {
             bg: 'whiteAlpha.400',
           },
         },
-        ul: {
+        '& ul': {
           pl: 5,
           my: 6,
         },
-        a: {
+        '& a': {
           textDecor: 'underline',
           color: 'brand.400',
         },

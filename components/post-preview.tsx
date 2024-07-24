@@ -74,7 +74,7 @@ const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: PostPrevie
 
         <Button
           variant={'solid'}
-          //   size={{ base: 'md', sm: 'sm' }}
+          size={{ base: 'md', sm: 'sm' }}
           colorPalette="brand"
           w={{ base: 'full', sm: 'auto' }}
           asChild
