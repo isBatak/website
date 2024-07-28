@@ -1,9 +1,22 @@
-import { Box, Flex, IconButton, VStack, HStack, Icon, Container, Button, Text, Collapsible } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  IconButton,
+  VStack,
+  HStack,
+  Icon,
+  Container,
+  Button,
+  Text,
+  Collapsible,
+  ClientOnly,
+} from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { useTheme } from 'next-themes';
 
 import NextLink from 'next/link';
 import { IoMoon, IoSunny, IoClose, IoMenu } from 'react-icons/io5';
+import { CgSpinner } from 'react-icons/cg';
 
 interface NavItem {
   label: string;
@@ -46,6 +59,16 @@ const MobileNav = () => {
         </Button>
       ))}
     </VStack>
+  );
+};
+
+const MobileToggleFallback = () => {
+  return (
+    <IconButton variant="ghost" aria-label="Toggle dark mode">
+      <Icon asChild animation="spin 0.5s linear infinite">
+        <CgSpinner />
+      </Icon>
+    </IconButton>
   );
 };
 
@@ -105,7 +128,9 @@ export const Navigation = () => {
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>
-            {/* <ModeToggle /> */}
+            <ClientOnly fallback={<MobileToggleFallback />}>
+              <ModeToggle />
+            </ClientOnly>
           </HStack>
         </Flex>
         <Collapsible.Root open={isOpen}>
