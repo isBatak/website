@@ -23,7 +23,7 @@ const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: PostPrevie
           }}
           fontWeight="bold"
           fontSize="2xl"
-          _hover={{ color: 'gray.600', textDecor: 'underline' }}
+          _hover={{ color: 'brand.500', textDecor: 'underline' }}
           asChild
         >
           <NextLink href={`/posts/${slug}`}>{title}</NextLink>

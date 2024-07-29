@@ -1,5 +1,7 @@
+import { buttonRecipe } from './recipes/button';
 import { containerRecipe } from './recipes/container';
 
 export const recipes = {
-  Container: containerRecipe,
+  container: containerRecipe,
+  button: buttonRecipe,
 };

@@ -13,7 +13,7 @@ type Props = {
 
 export const Layout = ({ preview, children, background }: Props) => {
   return (
-    <Flex minH="fill-available" direction="column" className="layout">
+    <Flex minH="100dvh" direction="column" className="layout">
       <Meta />
       {background}
       <Navigation />

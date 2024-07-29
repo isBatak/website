@@ -90,7 +90,7 @@ export const Navigation = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box as="header" w="full" position="sticky" top="0" backdropFilter="blur(5px)" zIndex="sticky">
+    <Box as="header" w="full" position="sticky" top="0" backdropFilter="blur(5px)" zIndex="sticky" flex="0">
       <Container py="0" px="0" flex="0">
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>

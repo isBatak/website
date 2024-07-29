@@ -4,8 +4,8 @@ import { IoHeart } from 'react-icons/io5';
 
 const Footer = () => {
   return (
-    <Box as="footer" py="5" flex="0" zIndex="1">
-      <Container>
+    <Box as="footer" flex="0" zIndex="1">
+      <Container py="5">
         <Flex justifyContent="space-between" alignItems="center">
           <Box>
             <Text color="gray.500" _dark={{ color: 'gray.200' }} fontSize="sm">
@@ -22,7 +22,7 @@ const Footer = () => {
               >
                 Ivica Batinić
               </Text>{' '}
-              with <Icon as={IoHeart} color="brand.400" />
+              with <Icon as={IoHeart} color="brand.600" />
             </Text>
           </Box>
           <Box>
