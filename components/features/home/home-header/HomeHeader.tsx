@@ -5,24 +5,26 @@ export interface IHomeHeaderProps {}
 
 export const HomeHeader: FC<IHomeHeaderProps> = () => {
   return (
-    <Container py="5" maxW="2xl" h="calc(100vh - 60px - 66px)">
+    <Container py="5" maxW="2xl" h="calc(100vh - 60px - 66px)" position="relative" zIndex={1} isolation="isolate">
       <Flex align="center" position="relative" h="100%" /* From https://css.glass */>
         <Flex
           direction={{ base: 'column', md: 'row' }}
           gap="5"
           py="4"
           px="8"
-          bg="whiteAlpha.300"
+          bg="brand.50/50"
+          _dark={{
+            bg: 'brand.950/20',
+          }}
           borderRadius="xl"
-          boxShadow="sm"
           blur="md"
           backdropBlur="md"
           backdropFilter="auto"
-          border="1px solid rgba(255, 255, 255, 0.3)"
+          border="1px solid {brand.50}"
         >
-          <Box flexShrink={0}>
+          <Flex flexShrink={0} alignItems="center" justifyContent="center">
             <Image src="/assets/logo.svg" alt="isBatak" />
-          </Box>
+          </Flex>
           <Box textAlign={{ base: 'center', md: 'left' }}>
             <Heading mb={2} textStyle={{ base: '3xl', md: '4xl' }}>
               Hello! 👋

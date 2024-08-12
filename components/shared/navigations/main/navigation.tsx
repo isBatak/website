@@ -52,7 +52,7 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <VStack bg="white" _dark={{ bg: 'gray.800' }} p={4} display={{ md: 'none' }}>
+    <VStack p={4} hideFrom="md" gap={2} backdropFilter="blur(5px)">
       {NAV_ITEMS.map((navItem) => (
         <Button key={navItem.label} w="full" asChild>
           <NextLink href={navItem.href ?? '#'}>{navItem.label}</NextLink>
@@ -87,7 +87,7 @@ const ModeToggle = () => {
 };
 
 export const Navigation = () => {
-  const { isOpen, onToggle } = useDisclosure();
+  const { open, onToggle } = useDisclosure();
 
   return (
     <Box as="header" w="full" position="sticky" top="0" backdropFilter="blur(5px)" zIndex="sticky" flex="0">
@@ -95,12 +95,12 @@ export const Navigation = () => {
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
             <IconButton onClick={onToggle} variant={'ghost'} aria-label={'Toggle Navigation'}>
-              {isOpen ? (
-                <Icon asChild w={3} h={3}>
+              {open ? (
+                <Icon asChild boxSize={5}>
                   <IoClose />
                 </Icon>
               ) : (
-                <Icon asChild w={5} h={5}>
+                <Icon asChild boxSize={5}>
                   <IoMenu />
                 </Icon>
               )}
@@ -133,16 +133,8 @@ export const Navigation = () => {
             </ClientOnly>
           </HStack>
         </Flex>
-        <Collapsible.Root open={isOpen}>
-          <Collapsible.Content
-            overflow="hidden"
-            _open={{
-              animation: 'collapse-in 250ms',
-            }}
-            _closed={{
-              animation: 'collapse-out 250ms',
-            }}
-          >
+        <Collapsible.Root open={open}>
+          <Collapsible.Content>
             <MobileNav />
           </Collapsible.Content>
         </Collapsible.Root>
