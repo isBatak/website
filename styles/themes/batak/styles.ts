@@ -27,6 +27,11 @@ const styles: Styles = {
       'p, ul, ol, blockquote': {
         my: 6,
       },
+      blockquote: {
+        pl: 4,
+        borderLeft: '4px solid',
+        borderColor: 'brand.400',
+      },
       h2: {
         fontSize: '3xl',
         mt: 12,
@@ -45,13 +50,16 @@ const styles: Styles = {
       pre: {
         p: 5,
         borderRadius: 5,
-        bg: mode('gray.100', 'whiteAlpha.400')(props),
+        bg: mode('gray.100', 'whiteAlpha.300')(props),
         overflow: 'auto',
         code: {
           bg: 'none',
         },
       },
       ul: {
+        pl: 5,
+      },
+      ol: {
         pl: 5,
       },
       a: {
