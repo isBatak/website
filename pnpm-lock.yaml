@@ -26,6 +26,9 @@ importers:
       '@next/bundle-analyzer':
         specifier: ^12.1.6
         version: 12.3.4
+      '@next/third-parties':
+        specifier: ^14.2.5
+        version: 14.2.5(next@12.3.4(@babel/core@7.18.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@react-three/drei':
         specifier: ^9.11.3
         version: 9.11.3(@react-three/fiber@8.0.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.141.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.141.0)
@@ -1738,6 +1741,12 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
+
+  '@next/third-parties@14.2.5':
+    resolution: {integrity: sha512-PDRJm8RZ3rnGNporHKjcdCeZqoW8iJ5uP0clo1Z08TqJiQzuntJ66zrGYCJyqTakx62UJNOp73YsQCFo6kbYYg==}
+    peerDependencies:
+      next: ^13.0.0 || ^14.0.0
+      react: ^18.2.0
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -7300,6 +7309,9 @@ packages:
   text-table@0.2.0:
     resolution: {integrity: sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=}
 
+  third-party-capital@1.0.20:
+    resolution: {integrity: sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==}
+
   three-custom-shader-material@3.3.6:
     resolution: {integrity: sha512-W5zsvfdC5Bj8hvZCCFKMl5p2SEHQv+Cnsd2ZMmZaDT0V0KI3tdjJaYJlTPlEn2qWTIYuZ7c0T6vfsa3o0kp4xA==}
     peerDependencies:
@@ -10078,6 +10090,12 @@ snapshots:
 
   '@next/swc-win32-x64-msvc@12.3.4':
     optional: true
+
+  '@next/third-parties@14.2.5(next@12.3.4(@babel/core@7.18.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      next: 12.3.4(@babel/core@7.18.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      third-party-capital: 1.0.20
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -17299,6 +17317,8 @@ snapshots:
       minimatch: 3.1.2
 
   text-table@0.2.0: {}
+
+  third-party-capital@1.0.20: {}
 
   three-custom-shader-material@3.3.6(@react-three/fiber@8.0.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.141.0))(react@18.3.1)(three@0.141.0):
     dependencies:
