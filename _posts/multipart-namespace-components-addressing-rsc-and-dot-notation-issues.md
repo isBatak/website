@@ -116,11 +116,15 @@ This line gathers all the named exports under a `Card` namespace, which you can 
 ```jsx
 import { Card } from './src/ui/card';
 
-<Card.Root>
-  <Card.Header></Card.Header>
-  <Card.Body></Card.Body>
-  <Card.Footer></Card.Footer>
-</Card.Root>
+export function App() {
+  return (
+    <Card.Root>
+      <Card.Header></Card.Header>
+      <Card.Body></Card.Body>
+      <Card.Footer></Card.Footer>
+    </Card.Root>
+  );
+}
 ```
 
 **Advantages of the Modern Approach:**
