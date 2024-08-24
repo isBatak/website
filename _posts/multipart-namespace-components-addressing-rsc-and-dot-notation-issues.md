@@ -10,6 +10,9 @@ ogImage:
   url: '/assets/blog/multipart-namespace-components-addressing-rsc-and-dot-notation-issues/cover.jpg'
 ---
 
+> **Note (Updated 24.08.2024):**
+> After further investigation and prototyping, I discovered some important limitations regarding the tree-shaking capabilities of bundlers like Webpack when using dot-notation (namespace) syntax. I have detailed these findings in the latter part of this post. If you're primarily interested in this aspect, I recommend jumping to the update section [here](#update-insights-on-bundler-limitations-with-dot-notation).
+
 ## Introduction
 
 In React development, organising components well is crucial for maintainability and performance. One approach is using namespaced components, also known as dot notation, where related parts are grouped together. Recently, a significant issue with React Server Components (RSC) has been raised, especially in the discussions ["Dot notation client component breaks consuming RSC"](https://github.com/vercel/next.js/issues/51593) and ["Issue #58776: Challenges with Namespaced Components in RSC”](https://github.com/vercel/next.js/issues/58776).
@@ -181,3 +184,29 @@ Here’s a brief overview of some popular libraries that exemplify these approac
 ## Conclusion
 
 Switching to this modern approach for namespaced components makes your React code more efficient and maintainable. By avoiding old patterns' issues, you can take full advantage of React’s capabilities, especially with server components and tree shaking. Try this method in your projects to see the benefits firsthand.
+
+<h2 id="update-insights-on-bundler-limitations-with-dot-notation">Update: Insights on Bundler Limitations with Dot Notation</h2>
+After further investigation and prototyping, it turns out that bundlers aren't as smart as I initially thought. Unfortunately, it seems that Webpack, as used in Next.js, cannot tree-shake components when using dot notation (namespace) syntax. This is quite disappointing, given my expectations for more efficient bundling.
+
+![page](/assets/blog/multipart-namespace-components-addressing-rsc-and-dot-notation-issues/page.png)
+
+![bundle](/assets/blog/multipart-namespace-components-addressing-rsc-and-dot-notation-issues/bundle.png)
+
+This limitation is a significant downside of using dot-notation. If you aim to import just a single part of a component, I highly recommend directly importing `CardBody` instead. This approach is one reason why libraries like Chakra UI v3 offer individual exports for each component part. In most practical scenarios, you'll likely end up using around 80% of the parts of a component, so this limitation might not be as problematic as it seems at first.
+
+```jsx
+import {
+  CardRoot,
+  CardBody,
+} from "@/components/ui/card";
+
+export function App() {
+  return (
+    <CardRoot>
+      <CardBody>BODY</CardBody>
+    </CardRoot>
+  );
+}
+```
+
+**However, it still raises an important question:** why can't bundlers fully support tree-shaking with dot-notation, especially since it's based on ES Modules (ESM)? I was really hoping that modern bundlers would be smart enough to optimize this. But, it seems we're not quite there yet, despite the popularity of dot-notation.
