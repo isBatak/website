@@ -39,7 +39,7 @@ export default Card;
 **Downsides:**
 
 - **Serialisation Issues:** This pattern isn’t compatible with React Server Components (RSC) because it can’t be serialised.
-- **Three shaking Issues:** All parts get included in the bundle, which is inefficient.
+- **tree shaking Issues:** All parts get included in the bundle, which is inefficient.
 
 
 
@@ -64,7 +64,7 @@ export default Object.assign(Card, {
 **Downsides:**
 
 - **Same Serialization Issue:** This method also doesn’t work well with RSC.
-- **Same three shaking Issue:** It still pulls in all parts when you might only need one.
+- **Same tree shaking Issue:** It still pulls in all parts when you might only need one.
 
 This example can still have similar tree-shaking issues as the first one.
 
