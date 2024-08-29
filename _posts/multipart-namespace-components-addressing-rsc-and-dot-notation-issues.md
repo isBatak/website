@@ -186,7 +186,7 @@ Here’s a brief overview of some popular libraries that exemplify these approac
 Switching to this modern approach for namespaced components makes your React code more efficient and maintainable. By avoiding old patterns' issues, you can take full advantage of React’s capabilities, especially with server components and tree shaking. Try this method in your projects to see the benefits firsthand.
 
 <h2 id="update-insights-on-bundler-limitations-with-dot-notation">Update: Insights on Bundler Limitations with Dot Notation</h2>
-After further investigation and prototyping, it turns out that bundlers aren't as smart as I initially thought. Unfortunately, it seems that Webpack, as used in Next.js, cannot tree-shake components when using dot notation (namespace) syntax. This is quite disappointing, given my expectations for more efficient bundling.
+After further investigation and prototyping (thank you [@BulicJakov](https://x.com/bulicjakov) for providing the code example), it turns out that bundlers aren't as smart as I initially thought. Unfortunately, it seems that Webpack, as used in Next.js, cannot tree-shake components when using dot notation (namespace) syntax. This is quite disappointing, given my expectations for more efficient bundling.
 
 ![page](/assets/blog/multipart-namespace-components-addressing-rsc-and-dot-notation-issues/page.png)
 
