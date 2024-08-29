@@ -193,6 +193,8 @@ After further investigation and prototyping with the help of my colleague [@Buli
 
 ![bundle](/assets/blog/multipart-namespace-components-addressing-rsc-and-dot-notation-issues/bundle.png)
 
+Demo app repository: [dot-notation-issues](https://github.com/isBatak/dot-notation-issues/tree/main)
+
 This limitation is a significant downside of using dot-notation. If you aim to import just a single part of a component, I highly recommend directly importing `CardBody` instead. This approach is one reason why libraries like Chakra UI v3 offer individual exports for each component part. In most practical scenarios, you'll likely end up using around 80% of the parts of a component, so this limitation might not be as problematic as it seems at first.
 
 ```jsx
