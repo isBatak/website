@@ -6,7 +6,15 @@ export interface AppRenderProps {
 }
 import type { NextComponentType, NextPageContext } from 'next';
 import type { NextRouter } from 'next/router';
+import '../styles/prism.css';
+
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export default function App({ Component, pageProps }: AppRenderProps) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <GoogleAnalytics gaId="G-NH6BLTL7X0" />
+      <Component {...pageProps} />
+    </>
+  );
 }
