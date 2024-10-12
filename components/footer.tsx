@@ -1,19 +1,28 @@
-import { Box, Container, Flex, Icon, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Flex, Icon, Text } from '@chakra-ui/react';
 import { SocialMediaLinks } from './social-media-links';
 import { IoHeart } from 'react-icons/io5';
 
 const Footer = () => {
   return (
-    <Box as="footer" py="5" flex="0">
-      <Container>
+    <Box as="footer" flex="0" zIndex="1">
+      <Container py="5">
         <Flex justifyContent="space-between" alignItems="center">
           <Box>
-            <Text color={useColorModeValue('gray.500', 'gray.200')} fontSize="sm">
+            <Text color="gray.500" _dark={{ color: 'gray.200' }} fontSize="sm">
               by{' '}
-              <Text as="span" layerStyle="gradientText" fontSize="md" fontWeight="bold">
+              <Text
+                as="span"
+                bgGradient="to-l"
+                gradientFrom="#fc4a1a"
+                gradientTo="#f7b733"
+                bgClip="text"
+                color="transparent"
+                fontSize="md"
+                fontWeight="bold"
+              >
                 Ivica Batinić
               </Text>{' '}
-              with <Icon as={IoHeart} color="brand.400" />
+              with <Icon as={IoHeart} color="brand.600" />
             </Text>
           </Box>
           <Box>

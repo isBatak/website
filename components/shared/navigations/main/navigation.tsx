@@ -4,21 +4,19 @@ import {
   IconButton,
   VStack,
   HStack,
-  Collapse,
   Icon,
-  Link,
-  useColorModeValue,
-  useDisclosure,
   Container,
-  Image,
-  Heading,
-  useColorMode,
   Button,
   Text,
+  Collapsible,
+  ClientOnly,
 } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { useTheme } from 'next-themes';
 
 import NextLink from 'next/link';
-import { IoMoon, IoSunny, IoClose, IoMenu, IoArrowDown } from 'react-icons/io5';
+import { IoMoon, IoSunny, IoClose, IoMenu } from 'react-icons/io5';
+import { CgSpinner } from 'react-icons/cg';
 
 interface NavItem {
   label: string;
@@ -39,18 +37,13 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('black', 'gray.200');
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
-
   return (
-    <HStack spacing={2}>
+    <HStack gap={2}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <NextLink href={navItem.href ?? '#'} passHref>
-            <Button as="a" p={3} fontSize={'sm'} fontWeight="black" variant="ghost" borderRadius="full" size="xs">
-              {navItem.label}
-            </Button>
-          </NextLink>
+          <Button asChild p={3} fontSize={'sm'} fontWeight="black" variant="ghost" borderRadius="full" size="xs">
+            <NextLink href={navItem.href ?? '#'}>{navItem.label}</NextLink>
+          </Button>
         </Box>
       ))}
     </HStack>
@@ -59,77 +52,92 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <VStack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+    <VStack p={4} hideFrom="md" gap={2} backdropFilter="blur(5px)">
       {NAV_ITEMS.map((navItem) => (
-        <NextLink key={navItem.label} href={navItem.href ?? '#'} passHref>
-          <Button as="a" w="full">
-            {navItem.label}
-          </Button>
-        </NextLink>
+        <Button key={navItem.label} w="full" asChild>
+          <NextLink href={navItem.href ?? '#'}>{navItem.label}</NextLink>
+        </Button>
       ))}
     </VStack>
   );
 };
 
+const MobileToggleFallback = () => {
+  return (
+    <IconButton variant="ghost" aria-label="Toggle dark mode">
+      <Icon asChild animation="spin 0.5s linear infinite">
+        <CgSpinner />
+      </Icon>
+    </IconButton>
+  );
+};
+
 const ModeToggle = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { theme, setTheme } = useTheme();
+
+  const toggleColorMode = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   return (
-    <IconButton
-      variant="icon"
-      onClick={toggleColorMode}
-      aria-label="Toggle dark mode"
-      icon={colorMode === 'light' ? <IoMoon /> : <IoSunny />}
-    />
+    <IconButton variant="ghost" onClick={toggleColorMode} aria-label="Toggle dark mode">
+      {theme === 'light' ? <IoMoon /> : <IoSunny />}
+    </IconButton>
   );
 };
 
 export const Navigation = () => {
-  const { isOpen, onToggle } = useDisclosure();
+  const { open, onToggle } = useDisclosure();
 
   return (
-    <Box
-      as="header"
-      w="full"
-      position="sticky"
-      top="0"
-      backdropFilter="blur(5px)"
-      zIndex="sticky"
-      // _light={{ bg: 'whiteAlpha.500' }}
-      // _dark={{ bg: 'blackAlpha.500' }}
-    >
+    <Box as="header" w="full" position="sticky" top="0" backdropFilter="blur(5px)" zIndex="sticky" flex="0">
       <Container py="0" px="0" flex="0">
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
-            <IconButton
-              onClick={onToggle}
-              icon={isOpen ? <Icon as={IoClose} w={3} h={3} /> : <Icon as={IoMenu} w={5} h={5} />}
-              variant={'ghost'}
-              aria-label={'Toggle Navigation'}
-            />
+            <IconButton onClick={onToggle} variant={'ghost'} aria-label={'Toggle Navigation'}>
+              {open ? (
+                <Icon asChild boxSize={5}>
+                  <IoClose />
+                </Icon>
+              ) : (
+                <Icon asChild boxSize={5}>
+                  <IoMenu />
+                </Icon>
+              )}
+            </IconButton>
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <NextLink href="/" passHref>
-              <Text as="a" _dark={{ color: 'white' }} _light={{ color: 'gray.800' }} fontSize="2xl" fontWeight="bold">
-                <Text as="span" layerStyle="gradientText">
+            <Text asChild _dark={{ color: 'white' }} _light={{ color: 'gray.800' }} fontSize="2xl" fontWeight="bold">
+              <NextLink href="/">
+                <Text
+                  as="span"
+                  bgGradient="to-l"
+                  gradientFrom="#fc4a1a"
+                  gradientTo="#f7b733"
+                  bgClip="text"
+                  color="transparent"
+                >
                   _is
                 </Text>
                 Batak
-              </Text>
-            </NextLink>
+              </NextLink>
+            </Text>
           </Flex>
 
-          <HStack flex={{ base: 1, md: 0 }} justify={'flex-end'} align="center" spacing={6}>
+          <HStack flex={{ base: 1, md: 0 }} justify={'flex-end'} align="center" gap={6}>
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>
-            <ModeToggle />
+            <ClientOnly fallback={<MobileToggleFallback />}>
+              <ModeToggle />
+            </ClientOnly>
           </HStack>
         </Flex>
-
-        <Collapse in={isOpen} animateOpacity>
-          <MobileNav />
-        </Collapse>
+        <Collapsible.Root open={open}>
+          <Collapsible.Content>
+            <MobileNav />
+          </Collapsible.Content>
+        </Collapsible.Root>
       </Container>
     </Box>
   );
