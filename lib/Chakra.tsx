@@ -1,8 +1,9 @@
-import { ChakraProvider, cookieStorageManager, localStorageManager } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { GetServerSidePropsContext } from 'next';
 import { ReactNode } from 'react';
-import batak from '../styles/themes/batak';
-import Fonts from '../styles/themes/batak/Fonts';
+import { system as batakSystem } from '../themes/batak';
+import Fonts from '../themes/batak/Fonts';
+import { ThemeProvider } from 'next-themes';
 
 interface ChakraProps {
   cookies?: string;
@@ -11,9 +12,11 @@ interface ChakraProps {
 
 export const Chakra = ({ children, cookies }: ChakraProps) => {
   return (
-    <ChakraProvider theme={batak} colorModeManager={cookies ? cookieStorageManager(cookies) : localStorageManager}>
-      <Fonts />
-      {children}
+    <ChakraProvider value={batakSystem}>
+      <ThemeProvider attribute="class" disableTransitionOnChange>
+        <Fonts />
+        {children}
+      </ThemeProvider>
     </ChakraProvider>
   );
 };

@@ -1,10 +1,9 @@
-import { ColorModeScript } from '@chakra-ui/react';
-import NextDocument, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" suppressHydrationWarning>
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=optional" rel="stylesheet" />
           <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png" />
@@ -16,7 +15,6 @@ export default class Document extends NextDocument {
           <meta name="theme-color" content="#ffffff"></meta>
         </Head>
         <body>
-          <ColorModeScript />
           <Main />
           <NextScript />
         </body>

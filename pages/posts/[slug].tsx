@@ -29,7 +29,7 @@ const Post = ({ post, preview }: Props) => {
       <Layout preview={preview}>
         {router.isFallback ? (
           <Container maxW="740px" pb={32}>
-            <Heading>Loading…</Heading>
+            <Heading textStyle={{ base: '3xl', md: '4xl' }}>Loading…</Heading>
           </Container>
         ) : (
           <Container maxW="740px" py={10}>

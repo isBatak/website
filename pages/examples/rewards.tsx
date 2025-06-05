@@ -1,23 +1,6 @@
 import { useState } from 'react';
 import { NextSeo } from 'next-seo';
-import {
-  Container,
-  Flex,
-  NumberInput,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-  Text,
-  VStack,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  RadioGroup,
-  Stack,
-  Radio,
-} from '@chakra-ui/react';
+import { Container, Flex, Text, VStack } from '@chakra-ui/react';
 
 import Post from '../../types/post';
 import { Chakra } from '../../lib/Chakra';
@@ -66,16 +49,16 @@ const Rewards = ({ allPosts }: Props) => {
             {({ rewardMe }) => <IsBatak mt={20} onClick={() => rewardMe()} />}
           </Reward>
 
-          <RadioGroup my="5" value={type} onChange={(type) => setType(type as any)}>
-            <Stack spacing={5} direction="row">
-              <Radio colorScheme="brand" value="confetti">
+          {/* <Group my="5" value={type} onChange={(type) => setType(type as any)}>
+            <Stack gap={5} direction="row">
+              <Radio colorPalette="brand" value="confetti">
                 confetti
               </Radio>
-              <Radio colorScheme="brand" value="emoji">
+              <Radio colorPalette="brand" value="emoji">
                 emoji
               </Radio>
             </Stack>
-          </RadioGroup>
+          </Group> */}
 
           <VStack justify="stretch" w="full">
             {Object.entries(config).map(([option, value]) => {
@@ -87,11 +70,11 @@ const Rewards = ({ allPosts }: Props) => {
                   <Text fontSize="sm" mr={5} w="100px">
                     {option}
                   </Text>
-                  <Slider
+                  {/* <Slider
                     flex="1"
                     minW="0"
                     defaultValue={value}
-                    colorScheme="brand"
+                    colorPalette="brand"
                     min={minMaxStep[0]}
                     max={minMaxStep[1]}
                     step={minMaxStep[2]}
@@ -117,7 +100,7 @@ const Rewards = ({ allPosts }: Props) => {
                       <NumberIncrementStepper />
                       <NumberDecrementStepper />
                     </NumberInputStepper>
-                  </NumberInput>
+                  </NumberInput> */}
                 </Flex>
               );
             })}

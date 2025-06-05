@@ -1,20 +1,9 @@
-import DateFormater from './date-formater';
+import DateFormatter from './date-formatter';
 import NextLink from 'next/link';
 import Author from '../types/author';
-import {
-  Avatar,
-  Box,
-  Button,
-  chakra,
-  Flex,
-  Link,
-  useColorModeValue,
-  Text,
-  LinkBox,
-  LinkOverlay,
-} from '@chakra-ui/react';
+import { Avatar, Box, Button, chakra, Flex, Text, LinkBox, LinkOverlay } from '@chakra-ui/react';
 
-type Props = {
+type PostPreviewProps = {
   title: string;
   date: string;
   excerpt: string;
@@ -22,23 +11,32 @@ type Props = {
   slug: string;
 };
 
-const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: Props) => {
+const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: PostPreviewProps) => {
   return (
     <LinkBox {...rest}>
       <Box>
-        <NextLink href={`/posts/${slug}`} passHref>
-          <LinkOverlay
-            display="block"
-            color={useColorModeValue('gray.800', 'white')}
-            fontWeight="bold"
-            fontSize="2xl"
-            _hover={{ color: 'gray.600', textDecor: 'underline' }}
-          >
-            {title}
-          </LinkOverlay>
-        </NextLink>
+        <LinkOverlay
+          display="block"
+          color="gray.800"
+          _dark={{
+            color: 'white',
+          }}
+          fontWeight="bold"
+          fontSize="2xl"
+          _hover={{ color: 'brand.500', textDecor: 'underline' }}
+          asChild
+        >
+          <NextLink href={`/posts/${slug}`}>{title}</NextLink>
+        </LinkOverlay>
 
-        <chakra.p mt={2} fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
+        <chakra.p
+          mt={2}
+          fontSize="sm"
+          color="gray.600"
+          _dark={{
+            color: 'gray.400',
+          }}
+        >
           {excerpt}
         </chakra.p>
       </Box>
@@ -46,31 +44,48 @@ const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: Props) => 
       <Flex mt={4} justify="space-between" gap={4} direction={{ base: 'column', sm: 'row' }}>
         <Flex alignItems="center">
           <Flex alignItems="center">
-            <Avatar size="xs" name={author.name} src={author.picture} />
+            <Avatar.Root size="xs">
+              <Avatar.Image src={author.picture} />
+              <Avatar.Fallback name={author.name} />
+            </Avatar.Root>
 
-            <Text mx={2} fontWeight="bold" color={useColorModeValue('gray.700', 'gray.200')}>
+            <Text
+              mx={2}
+              fontWeight="bold"
+              color="gray.700"
+              _dark={{
+                color: 'gray.200',
+              }}
+            >
               {author.name}
             </Text>
           </Flex>
-          <chakra.span mx={1} fontSize="sm" color={useColorModeValue('gray.600', 'gray.300')}>
-            <DateFormater dateString={date} />
+          <chakra.span
+            mx={1}
+            fontSize="sm"
+            color="gray.600"
+            _dark={{
+              color: 'gray.300',
+            }}
+          >
+            <DateFormatter dateString={date} />
           </chakra.span>
         </Flex>
 
-        <NextLink href={`/posts/${slug}`} passHref>
-          <Button
-            variant={'solid'}
-            size={{ base: 'md', sm: 'sm' }}
-            colorScheme="brand"
-            w={{ base: 'full', sm: 'auto' }}
-            as="a"
-          >
+        <Button
+          variant={'solid'}
+          size={{ base: 'md', sm: 'sm' }}
+          colorPalette="brand"
+          w={{ base: 'full', sm: 'auto' }}
+          asChild
+        >
+          <NextLink href={`/posts/${slug}`}>
             Read More
             <Text as="span" ml="1" display={{ base: 'none', sm: 'unset' }}>
               &gt;
             </Text>
-          </Button>
-        </NextLink>
+          </NextLink>
+        </Button>
       </Flex>
     </LinkBox>
   );

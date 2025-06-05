@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/react';
 import { Career } from 'components/features/about/career/Career';
 import { Education } from 'components/features/about/education/Education';
-import { Layout } from 'components/shared/layouts/MainLayout/MainLayout';
+import { Layout } from '../components/shared/layouts/MainLayout/MainLayout';
 import { Chakra } from 'lib/Chakra';
 import { NextPage } from 'next';
 
