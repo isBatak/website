@@ -26,17 +26,17 @@ const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: Props) => 
   return (
     <LinkBox {...rest}>
       <Box>
-        <NextLink href={`/posts/${slug}`} passHref>
-          <LinkOverlay
-            display="block"
-            color={useColorModeValue('gray.800', 'white')}
-            fontWeight="bold"
-            fontSize="2xl"
-            _hover={{ color: 'gray.600', textDecor: 'underline' }}
-          >
-            {title}
-          </LinkOverlay>
-        </NextLink>
+        <LinkOverlay
+          as={NextLink}
+          href={`/posts/${slug}`}
+          display="block"
+          color={useColorModeValue('gray.800', 'white')}
+          fontWeight="bold"
+          fontSize="2xl"
+          _hover={{ color: 'gray.600', textDecor: 'underline' }}
+        >
+          {title}
+        </LinkOverlay>
 
         <chakra.p mt={2} fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
           {excerpt}
@@ -57,20 +57,19 @@ const PostPreview = ({ title, date, excerpt, author, slug, ...rest }: Props) => 
           </chakra.span>
         </Flex>
 
-        <NextLink href={`/posts/${slug}`} passHref>
-          <Button
-            variant={'solid'}
-            size={{ base: 'md', sm: 'sm' }}
-            colorScheme="brand"
-            w={{ base: 'full', sm: 'auto' }}
-            as="a"
-          >
-            Read More
-            <Text as="span" ml="1" display={{ base: 'none', sm: 'unset' }}>
-              &gt;
-            </Text>
-          </Button>
-        </NextLink>
+        <Button
+          as={NextLink}
+          href={`/posts/${slug}`}
+          variant={'solid'}
+          size={{ base: 'md', sm: 'sm' }}
+          colorScheme="brand"
+          w={{ base: 'full', sm: 'auto' }}
+        >
+          Read More
+          <Text as="span" ml="1" display={{ base: 'none', sm: 'unset' }}>
+            &gt;
+          </Text>
+        </Button>
       </Flex>
     </LinkBox>
   );

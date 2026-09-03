@@ -94,9 +94,31 @@ void main() {
 
   float alpha = noise + noise1 + noise2;
 
-  float x = 1. - noise;
+  float x = noise;
   vec3 color = texture2D(uGradient, vec2(x, 0.5)).rgb;
 
-  gl_FragColor.rgb = color;
-  gl_FragColor.a = clamp(0.,alpha,1.) * uOpacity;
+  // Preserve the original noise field, animation, and sampled color. Only
+  // screen its alpha through a small halftone grid.
+  // Drop the very faint positive noise that otherwise turns the white space
+  // into a dotted veil. The reference keeps those areas completely clear.
+  float coverage = smoothstep(0.14, 1.0, max(alpha, 0.0));
+  const float dotSpacing = 7.0;
+  vec2 dotCell = mod(gl_FragCoord.xy, dotSpacing) - dotSpacing * 0.5;
+  float dotRadius = 4.55 * sqrt(coverage);
+  float dither = 1.0 - smoothstep(
+    dotRadius - 0.2,
+    dotRadius + 0.2,
+    length(dotCell)
+  );
+  dither *= step(0.001, coverage);
+
+  // Counter the optical desaturation introduced by placing tiny colored dots
+  // over white, while retaining the hues from the original gradient texture.
+  float luminance = dot(color, vec3(0.2126, 0.7152, 0.0722));
+  color = mix(vec3(luminance), color, 1.5);
+  color = clamp((color - 0.5) * 1.18 + 0.5, 0.0, 1.0);
+  color.gb *= vec2(0.84, 0.8);
+
+  float outputAlpha = dither * uOpacity;
+  gl_FragColor = vec4(color * outputAlpha, outputAlpha);
 }

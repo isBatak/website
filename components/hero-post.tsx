@@ -37,11 +37,9 @@ const HeroPost = ({ title, coverImage, date, slug, excerpt }: Props) => {
       >
         {excerpt}
       </chakra.p>
-      <Link href={`/posts/${slug}`} passHref>
-        <Button as="a" w={{ base: 'full', sm: 'auto' }} size="lg">
-          Read More
-        </Button>
-      </Link>
+      <Button as={Link} href={`/posts/${slug}`} w={{ base: 'full', sm: 'auto' }} size="lg">
+        Read More
+      </Button>
     </Box>
   );
 };

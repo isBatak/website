@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-// eslint-disable-next-line @next/next/no-server-import-in-page
 import { NextRequest } from 'next/server';
 import { ImageResponse } from '@vercel/og';
 
 export const config = {
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 };
 
 const font = fetch(new URL('../../assets/fonts/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer());

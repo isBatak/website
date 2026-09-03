@@ -46,11 +46,18 @@ const DesktopNav = () => {
     <HStack spacing={2}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <NextLink href={navItem.href ?? '#'} passHref>
-            <Button as="a" p={3} fontSize={'sm'} fontWeight="black" variant="ghost" borderRadius="full" size="xs">
-              {navItem.label}
-            </Button>
-          </NextLink>
+          <Button
+            as={NextLink}
+            href={navItem.href ?? '#'}
+            p={3}
+            fontSize={'sm'}
+            fontWeight="black"
+            variant="ghost"
+            borderRadius="full"
+            size="xs"
+          >
+            {navItem.label}
+          </Button>
         </Box>
       ))}
     </HStack>
@@ -61,11 +68,9 @@ const MobileNav = () => {
   return (
     <VStack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
-        <NextLink key={navItem.label} href={navItem.href ?? '#'} passHref>
-          <Button as="a" w="full">
-            {navItem.label}
-          </Button>
-        </NextLink>
+        <Button as={NextLink} key={navItem.label} href={navItem.href ?? '#'} w="full">
+          {navItem.label}
+        </Button>
       ))}
     </VStack>
   );
@@ -93,7 +98,6 @@ export const Navigation = () => {
       w="full"
       position="sticky"
       top="0"
-      backdropFilter="blur(5px)"
       zIndex="sticky"
       // _light={{ bg: 'whiteAlpha.500' }}
       // _dark={{ bg: 'blackAlpha.500' }}
@@ -109,14 +113,19 @@ export const Navigation = () => {
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <NextLink href="/" passHref>
-              <Text as="a" _dark={{ color: 'white' }} _light={{ color: 'gray.800' }} fontSize="2xl" fontWeight="bold">
-                <Text as="span" layerStyle="gradientText">
-                  _is
-                </Text>
-                Batak
+            <Text
+              as={NextLink}
+              href="/"
+              _dark={{ color: 'white' }}
+              _light={{ color: 'gray.800' }}
+              fontSize="2xl"
+              fontWeight="bold"
+            >
+              <Text as="span" layerStyle="gradientText">
+                _is
               </Text>
-            </NextLink>
+              Batak
+            </Text>
           </Flex>
 
           <HStack flex={{ base: 1, md: 0 }} justify={'flex-end'} align="center" spacing={6}>
