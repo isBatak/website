@@ -27,8 +27,8 @@ export default function useInterval(callback, delay) {
       callback();
     }, delay);
     return () => clearInterval(interval);
-  
-  // Ignore the rule of hook by excluding callback dependency
+
+    // Ignore the rule of hook by excluding callback dependency
   }, [delay]);
 }
 ```
@@ -75,7 +75,6 @@ export default function useInterval(callback, delay) {
       callbacRef.current && callbacRef.current();
     }, delay);
     return () => clearInterval(interval);
-  
   }, [delay]);
 }
 ```

@@ -7,9 +7,8 @@ import { useState, useMemo } from 'react';
 import { useThree } from '@react-three/fiber';
 import { useGLTF, Float } from '@react-three/drei';
 import { LayerMaterial, Color, Depth, Fresnel, Noise } from 'lamina/vanilla';
-import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 
-type GLTFResult = GLTF & {
+type GLTFResult = ReturnType<typeof useGLTF> & {
   nodes: {
     Meat: THREE.Mesh;
     Bone: THREE.Mesh;
@@ -47,7 +46,7 @@ function Drumstick() {
   const { nodes, materials } = useGLTF('/3d/batak.glb') as GLTFResult;
 
   const [speed] = useState(() => 0.1 + Math.random() / 10);
-  const position = useMemo(() => {
+  const position = useMemo<[number, number, number]>(() => {
     const z = Math.random() * -30;
     const bounds = viewport.getCurrentViewport(camera, [0, 0, z]);
     return [THREE.MathUtils.randFloatSpread(bounds.width), THREE.MathUtils.randFloatSpread(bounds.height * 0.75), z];

@@ -22,6 +22,7 @@ This blog post will show how we can solve this problem effectively using a `Card
 ## Understanding Old Patterns and Their Downsides
 
 ### The Function Assignment Pattern
+
 One old method is the function assignment pattern.
 
 Here’s how it looks:
@@ -29,9 +30,9 @@ Here’s how it looks:
 ```jsx
 function Card() {}
 
-Card.Header = function Header() {}
-Card.Body = function Body() {}
-Card.Footer = function Footer() {}
+Card.Header = function Header() {};
+Card.Body = function Body() {};
+Card.Footer = function Footer() {};
 
 export default Card;
 ```
@@ -41,8 +42,6 @@ export default Card;
 - **Serialisation Issues:** This pattern isn’t compatible with React Server Components (RSC) because it can’t be serialised.
 - **tree shaking Issues:** All parts get included in the bundle, which is inefficient.
 
-
-
 > **Tree shaking** is a form of dead code elimination that removes unused code from the bundle. For tree shaking to work effectively:
 >
 > 1. **Static Analysis**: The optimiser must be able to statically analyse the code. This usually works well when modules are ES modules(using `import`/`export`).
@@ -51,6 +50,7 @@ export default Card;
 This example is a bit tricky for tree-shaking because `Card.Header` and `Card.Footer` are properties assigned directly to a function, not independent imports. Some optimisers might struggle to identify these as unused, particularly if they are part of the same file or are bundled together without clear module boundaries.
 
 ### The Object.assign Pattern
+
 Another method is using `Object.assign`:
 
 ```jsx
@@ -80,6 +80,7 @@ Tree shaking works best when the code is structured in a way that allows the opt
 I found this pattern in the [Chakra UI v3 source](https://github.com/chakra-ui/chakra-ui/tree/main/packages/react/src/components/card) code. The solution is both smart and modern. It addresses serialisation and code-splitting problems associated with the dot notation pattern and utilises ESM modules.
 
 ### Implementing the Solution
+
 Here’s the step-by-step breakdown:
 
 1. **Named Exports for Each Part:**
@@ -91,18 +92,14 @@ export function CardHeader() {}
 export function CardBody() {}
 export function CardFooter() {}
 ```
+
 Using named exports for each component (`CardRoot`, `CardHeader`, `CardBody`, `CardFooter`) enables tree-shaking at the module level. Each component is now its own export, making it easier for the bundler to detect and eliminate unused components.
 
 2. **Create a Namespace Module:**
 
 ```jsx
 // namespaces.ts
-export {
-    CardBody as Body,
-    CardRoot as Root,
-    CardFooter as Footer,
-    CardHeader as Header,
-} from "./card";
+export { CardBody as Body, CardRoot as Root, CardFooter as Footer, CardHeader as Header } from './card';
 ```
 
 This step allows you to create a "namespace" while still leveraging the named exports. By re-exporting the components with aliases (e.g., `CardRoot` as `Root`), you maintain the desired naming convention in your API without sacrificing tree-shaking capabilities.
@@ -111,7 +108,7 @@ This step allows you to create a "namespace" while still leveraging the named ex
 
 ```jsx
 // index.tsx
-export * as Card from "./namespace";
+export * as Card from './namespace';
 ```
 
 This line gathers all the named exports under a `Card` namespace, which you can then import and use as a single module:
@@ -198,10 +195,7 @@ Demo app repository: [dot-notation-issues](https://github.com/isBatak/dot-notati
 This limitation is a significant downside of using dot-notation. If you aim to import just a single part of a component, I highly recommend directly importing `CardBody` instead. This approach is one reason why libraries like Chakra UI v3 offer individual exports for each component part. In most practical scenarios, you'll likely end up using around 80% of the parts of a component, so this limitation might not be as problematic as it seems at first.
 
 ```jsx
-import {
-  CardRoot,
-  CardBody,
-} from "@/components/ui/card";
+import { CardRoot, CardBody } from '@/components/ui/card';
 
 export function App() {
   return (

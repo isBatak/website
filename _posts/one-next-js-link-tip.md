@@ -15,7 +15,7 @@ You should never colocate Next.js Link inside actionable components, instead you
 ## So, instead of this ⚡️
 
 ```tsx
-const SomeSpecificFeatureButton = ({feature}) => {
+const SomeSpecificFeatureButton = ({ feature }) => {
   return (
     <NextLink href="" passHref>
       <Button as="a">
@@ -36,7 +36,7 @@ import NextLink from 'next/link';
 
 <NextLink href="/example-link" passHref>
   <SomeSpecificFeatureButton as="a" feature={feature} />
-</NextLink>
+</NextLink>;
 ```
 
 ## Reasons 🌈

@@ -1,10 +1,10 @@
-import { FC, Fragment, useCallback, useState, useRef, CSSProperties } from 'react';
+import { CSSProperties, FC, Fragment, ReactNode, useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { runIfFn, __DEV__ } from '@chakra-ui/utils';
-import { MaybeRenderProp } from '@chakra-ui/react-utils';
 
 import confetti from './Confetti';
 import emoji from './Emoji';
+
+type MaybeRenderProp<P> = ReactNode | ((props: P) => ReactNode);
 
 const transition = {
   type: 'spring',
@@ -93,7 +93,7 @@ export const Reward: FC<IRewardProps> = ({
     <Fragment>
       <div style={containerStyle} ref={containerRef} />
       <motion.div animate={state} variants={variants}>
-        {runIfFn(children, { rewardMe })}
+        {typeof children === 'function' ? children({ rewardMe }) : children}
       </motion.div>
     </Fragment>
   );

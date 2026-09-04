@@ -29,69 +29,67 @@ export default async function handler(req: NextRequest) {
     const fontData = await font;
 
     return new ImageResponse(
-      (
-        <div
+      <div
+        style={{
+          backgroundImage: 'radial-gradient(circle at 600px 500px, #F7B733 0%, #FC4A1A 100%)',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontFamily: '"Inter"',
+          fontStyle: 'normal',
+          fontWeight: '700',
+          color: 'white',
+        }}
+      >
+        <p
           style={{
-            backgroundImage: 'radial-gradient(circle at 600px 500px, #F7B733 0%, #FC4A1A 100%)',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontFamily: '"Inter"',
-            fontStyle: 'normal',
-            fontWeight: '700',
-            color: 'white',
+            position: 'absolute',
+            width: '1002px',
+            height: '240px',
+            left: '100px',
+            top: '100px',
+            fontSize: '64px',
+            lineHeight: '77px',
+            textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           }}
         >
-          <p
-            style={{
-              position: 'absolute',
-              width: '1002px',
-              height: '240px',
-              left: '100px',
-              top: '100px',
-              fontSize: '64px',
-              lineHeight: '77px',
-              textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-            }}
-          >
-            {title}
-          </p>
-          <img
-            width="256"
-            height="256"
-            src={profileImage}
-            alt="profile image"
-            style={{
-              position: 'absolute',
-              width: '80px',
-              height: '80px',
-              left: '100px',
-              top: '435px',
-              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-              borderRadius: '50px',
-            }}
-          />
-          <p
-            style={{
-              position: 'absolute',
-              width: '902px',
-              height: '43px',
-              left: '198px',
-              top: '438px',
-              fontStyle: 'normal',
-              fontWeight: '700',
-              fontSize: '36px',
-              lineHeight: '44px',
+          {title}
+        </p>
+        <img
+          width="256"
+          height="256"
+          src={profileImage}
+          alt="profile image"
+          style={{
+            position: 'absolute',
+            width: '80px',
+            height: '80px',
+            left: '100px',
+            top: '435px',
+            boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+            borderRadius: '50px',
+          }}
+        />
+        <p
+          style={{
+            position: 'absolute',
+            width: '902px',
+            height: '43px',
+            left: '198px',
+            top: '438px',
+            fontStyle: 'normal',
+            fontWeight: '700',
+            fontSize: '36px',
+            lineHeight: '44px',
 
-              textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-            }}
-          >
-            {author}, {createdAt}
-          </p>
-        </div>
-      ),
+            textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+          }}
+        >
+          {author}, {createdAt}
+        </p>
+      </div>,
       {
         width: 1200,
         height: 630,

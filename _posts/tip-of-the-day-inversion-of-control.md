@@ -22,7 +22,7 @@ const countryOptions = useMemo(() => {
   });
 });
 
-return <ReactSelect options={countryOptions} />
+return <ReactSelect options={countryOptions} />;
 ```
 
 ## Solution ✅
@@ -42,16 +42,20 @@ You can pass raw data and provide methods that will select value and label from 
 ```
 
 It could be roughly translated to this:
+
 ```tsx
-{countries.map((country) => {
-  const value = getValue(country);
-  const label = getLabel(country);
-  return <Item value={value} label={label} />;
-})}
+{
+  countries.map((country) => {
+    const value = getValue(country);
+    const label = getLabel(country);
+    return <Item value={value} label={label} />;
+  });
+}
 ```
 
 ## Reasons 🌈
 
 This is more optimal because you don't have a double map, one in the your component and the other one in ReactSelect source code.
+
 - `useMemo` is not for data transformation.
 - `useMemo` is for expensive calculations like grouping and aggregating data, if you need to generate data based on some input, like Fibonacci Sequence.

@@ -1,8 +1,12 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, PropsWithChildren, ReactNode } from 'react';
 
-import { Container, Grid, GridItem, Heading, HTMLChakraProps, UnorderedList, Text, ListItem } from '@chakra-ui/react';
+import { Container, Grid, GridItem, Heading, UnorderedList, Text, ListItem } from '@chakra-ui/react';
 
-const Title: FC<HTMLChakraProps<'h2'>> = (props) => <Heading as="h2" size="sm" textAlign="end" {...props} />;
+const Title: FC<{ children: ReactNode }> = ({ children }) => (
+  <Heading as="h2" size="sm" textAlign="end">
+    {children}
+  </Heading>
+);
 
 const TitleRow: FC<{ title: string }> = ({ title }) => (
   <Fragment>
@@ -13,11 +17,13 @@ const TitleRow: FC<{ title: string }> = ({ title }) => (
   </Fragment>
 );
 
-const Label: FC<HTMLChakraProps<'p'>> = (props) => (
-  <Text as="p" fontWeight="medium" color="gray.500" textAlign="end" {...props} />
+const Label: FC<{ children: ReactNode }> = ({ children }) => (
+  <Text as="p" fontWeight="medium" color="gray.500" textAlign="end">
+    {children}
+  </Text>
 );
 
-const InfoRow: FC<{ label: string }> = ({ label, children }) => (
+const InfoRow: FC<PropsWithChildren<{ label: string }>> = ({ label, children }) => (
   <Fragment>
     <GridItem>
       <Label>{label}</Label>
@@ -33,9 +39,7 @@ const Spacer: FC = () => (
   </Fragment>
 );
 
-export interface IAboutContentProps {}
-
-export const AboutContent: FC<IAboutContentProps> = () => {
+export const AboutContent: FC = () => {
   return (
     <Container maxW="2xl">
       <Grid templateColumns="max-content 1fr" rowGap="5" columnGap="5">

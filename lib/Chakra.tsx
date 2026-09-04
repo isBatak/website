@@ -1,4 +1,4 @@
-import { ChakraProvider, cookieStorageManager, localStorageManager } from '@chakra-ui/react';
+import { ChakraProvider, cookieStorageManagerSSR, localStorageManager } from '@chakra-ui/react';
 import { GetServerSidePropsContext } from 'next';
 import { ReactNode } from 'react';
 import batak from '../styles/themes/batak';
@@ -11,7 +11,7 @@ interface ChakraProps {
 
 export const Chakra = ({ children, cookies }: ChakraProps) => {
   return (
-    <ChakraProvider theme={batak} colorModeManager={cookies ? cookieStorageManager(cookies) : localStorageManager}>
+    <ChakraProvider theme={batak} colorModeManager={cookies ? cookieStorageManagerSSR(cookies) : localStorageManager}>
       <Fonts />
       {children}
     </ChakraProvider>
