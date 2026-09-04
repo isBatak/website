@@ -97,20 +97,33 @@ void main() {
   float x = noise;
   vec3 color = texture2D(uGradient, vec2(x, 0.5)).rgb;
 
-  // Preserve the original noise field, animation, and sampled color. Only
-  // screen its alpha through a small halftone grid.
-  // Drop the very faint positive noise that otherwise turns the white space
-  // into a dotted veil. The reference keeps those areas completely clear.
-  float coverage = smoothstep(0.14, 1.0, max(alpha, 0.0));
-  const float dotSpacing = 7.0;
-  vec2 dotCell = mod(gl_FragCoord.xy, dotSpacing) - dotSpacing * 0.5;
-  float dotRadius = 4.55 * sqrt(coverage);
-  float dither = 1.0 - smoothstep(
-    dotRadius - 0.2,
-    dotRadius + 0.2,
-    length(dotCell)
-  );
-  dither *= step(0.001, coverage);
+  // Keep the body of the shape solid, but let its perimeter dissolve through
+  // a conventional dot screen instead of a soft, stained-looking fade.
+  float rawCoverage = max(alpha, 0.0);
+  float coverage = smoothstep(0.14, 0.9, rawCoverage);
+  float coreAlpha = smoothstep(0.5, 0.86, rawCoverage);
+  const float edgeSpacing = 7.0;
+  vec2 edgeCell = mod(gl_FragCoord.xy, edgeSpacing) - edgeSpacing * 0.5;
+  float edgeRadius = 3.15 * sqrt(coverage);
+  float edgeDots = 1.0 - smoothstep(edgeRadius - 0.22, edgeRadius + 0.22, length(edgeCell));
+  float shapeAlpha = max(coreAlpha, edgeDots * coverage);
+  shapeAlpha *= step(0.001, coverage);
+
+  // A subtly warped screen creates the darker ink visible in the reference.
+  // Variation is local to each tiny cell so it cannot form broad stains.
+  const float screenSpacing = 6.0;
+  vec2 screenWarp = vec2(
+    snoise(vec3(uv * 7.0, uTime * 0.16)),
+    snoise(vec3(uv * 7.0 + 23.0, uTime * 0.14))
+  ) * 0.28;
+  vec2 screenPosition = gl_FragCoord.xy + screenWarp;
+  vec2 screenPhase = screenPosition * (6.2831853 / screenSpacing);
+  float lattice = 0.5 + 0.25 * (cos(screenPhase.x) + cos(screenPhase.y));
+  vec2 screenCellIndex = floor(screenPosition / screenSpacing);
+  float cellVariation = fract(sin(dot(screenCellIndex, vec2(12.9898, 78.233))) * 43758.5453);
+  float inkThreshold = 0.64 + (cellVariation - 0.5) * 0.14;
+  float inkMark = smoothstep(inkThreshold - 0.055, inkThreshold + 0.055, lattice);
+  inkMark *= smoothstep(0.2, 0.72, coreAlpha);
 
   // Counter the optical desaturation introduced by placing tiny colored dots
   // over white, while retaining the hues from the original gradient texture.
@@ -118,7 +131,15 @@ void main() {
   color = mix(vec3(luminance), color, 1.5);
   color = clamp((color - 0.5) * 1.18 + 0.5, 0.0, 1.0);
   color.gb *= vec2(0.84, 0.8);
+  float lowToneAmount = 1.0 - smoothstep(0.08, 0.4, clamp(x, 0.0, 1.0));
+  color = mix(color, vec3(1.0, 0.878, 0.64), lowToneAmount * 0.94);
+  float highToneAmount = smoothstep(0.32, 0.72, clamp(x, 0.0, 1.0));
+  color = mix(color, vec3(1.0, 0.2, 0.01), highToneAmount * 0.94);
 
-  float outputAlpha = dither * uOpacity;
-  gl_FragColor = vec4(color * outputAlpha, outputAlpha);
+  vec3 darkerInk = color * vec3(0.82, 0.74, 0.76);
+  float inkStrength = inkMark * mix(0.24, 0.34, cellVariation);
+  vec3 printedColor = mix(color, darkerInk, inkStrength);
+
+  float outputAlpha = shapeAlpha * uOpacity;
+  gl_FragColor = vec4(printedColor * outputAlpha, outputAlpha);
 }
